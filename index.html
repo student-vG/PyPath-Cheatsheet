@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete Python Programming Cheatsheet - From Basics to Advanced AI">
+    <meta name="theme-color" content="#6366f1">
+    <title>PyPath Cheatsheet</title>
+      <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#6366f1">
+  <link rel="icon" href="pt3.png">
+  <link rel="apple-touch-icon" href="pt3.png">
+  <link rel="icon" type="image/x-icon" href="pt3.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlB5UGF0aCBDaGVhdHNoZWV0IiwKICAic2hvcnRfbmFtZSI6ICJQeVBhdGgiLAogICJzdGFydF91cmwiOiAiLyIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiIzFhMWEyZSIsCiAgInRoZW1lX2NvbG9yIjogIiM2MzY2ZjEiLAogICJpY29ucyI6IFt7InNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWwsJTNDc3ZnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyclMjB3aWR0aD0nMTkyJyBoZWlnaHQ9JzE5Mic+JTNDcmVjdCBmaWxsPSclMjM2MzY2ZjEnIHdpZHRoPScxOTInIGhlaWdodD0nMTkyJy8+JTNDdGV4dCB4PSc1MCUyNScgeT0nNTAlMjUnIGZvbnQtc2l6ZT0nODAnIGZpbGw9JyUyM2ZmZicgZm9udC1mYW1pbHk9J0FyaWFsJyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBkb21pbmFudC1iYXNlbGluZT0nbWlkZGxlJz5QeTwvdGV4dD4lM0Mvc3ZnPiIsICJzaXplcyI6ICIxOTJ4MTkyIiwgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCJ9XX0=">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0f0f1e;
+            --bg-secondary: #1a1a2e;
+            --bg-card: #16213e;
+            --accent-primary: #6366f1;
+            --accent-secondary: #818cf8;
+            --accent-pink: #ec4899;
+            --accent-blue: #3b82f6;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        body {
+              font-family: "Roboto", sans-serif;
+
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 80px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            top: 0;
+            z-index: 1000;
+            padding: 12px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-pink));
+background: linear-gradient(135deg, #00DBDE, #FC00FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-icon {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        /* Search */
+        .search-box {
+            flex: 1;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 40px 10px 15px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 12px;
+            cursor: pointer;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 15px 0;
+            scrollbar-width: thin;
+        }
+
+        .nav-tabs::-webkit-scrollbar {
+            height: 5px;
+        }
+
+        .nav-tabs::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+            border-radius: 10px;
+        }
+
+        .nav-tabs::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 10px;
+        }
+
+        .tab-btn {
+            padding: 8px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .tab-btn:hover {
+            background: var(--accent-primary);
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            background: linear-gradient(135deg, #AC32E4, #7918F2, #4801FF);
+            color: white;
+            border-color: var(--accent-primary);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+            padding: 15px;
+            background: var(--bg-card);
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 8px;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-pink));
+            background: linear-gradient(135deg, #B3FFAB, #12FFF7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+
+        /* Content Cards */
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .topic-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .topic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-pink));
+        }
+
+        .topic-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);
+            border-color: var(--accent-primary);
+        }
+
+        .topic-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .topic-number {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            background: linear-gradient(135deg, #3D4E81, #5753C9, #6E7FF3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .topic-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .topic-section {
+            margin: 12px 0;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .section-content {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .code-block {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 12px;
+            margin: 8px 0;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.8rem;
+        }
+
+        .code-block code {
+            color: #7dd3fc;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .tip-box {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 3px solid var(--success);
+            padding: 10px 12px;
+            border-radius: 6px;
+            margin-top: 12px;
+            font-size: 0.85rem;
+        }
+
+        .tip-box::before {
+            content: '💡 ';
+            font-size: 1.1rem;
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--border);
+            padding: 12px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .nav-btn:disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            background: linear-gradient(135deg, #5F72BD, #9B23EA);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(99, 102, 241, 0.3);
+            z-index: 998;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .topic-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .search-box {
+                max-width: 100%;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 0.85rem;
+            }
+
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                padding: 12px;
+            }
+
+            .stat-value {
+                font-size: 1.5rem;
+            }
+
+            .topic-card {
+                padding: 15px;
+            }
+
+            .topic-title {
+                font-size: 1rem;
+            }
+
+            .nav-buttons {
+                padding: 10px;
+            }
+
+            .nav-btn {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+
+            .scroll-top {
+                width: 40px;
+                height: 40px;
+                bottom: 80px;
+                right: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo span {
+                font-size: 1rem;
+            }
+
+            .stat-value {
+                font-size: 1.3rem;
+            }
+
+            .stat-label {
+                font-size: 0.75rem;
+            }
+
+            .topic-number {
+                width: 30px;
+                height: 30px;
+                font-size: 0.75rem;
+            }
+
+            .code-block {
+                font-size: 0.75rem;
+                padding: 10px;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-section {
+            animation: fadeIn 0.5s;
+        }
+
+
+        .install-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: opacity 0.3s ease;
+}
+
+.install-popup.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.popup-content {
+  background: #ffffff;
+  color: #222;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.popup-logo {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1rem;
+}
+
+#install-btn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  transition: background 0.3s;
+}
+
+#install-btn:hover {
+  background: #0056b3;
+}
+
+#close-popup {
+  background: transparent;
+  border: 1px solid #aaa;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+/* Add in the style section */
+.theme-toggle {
+    margin-left: 10px;
+    position: relative;
+}
+
+.theme-input {
+    opacity: 0;
+    position: absolute;
+}
+
+.theme-label {
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.25rem;
+    position: relative;
+    height: 38px;
+    width: 70px;
+    transform: scale(0.8);
+}
+
+.theme-icon {
+    font-size: 1.2rem;
+    transition: transform 0.5s;
+}
+
+.theme-label::after {
+    content: "";
+    background: var(--accent-primary);
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: 30px;
+    width: 30px;
+    transform: translateX(0);
+    transition: transform 0.3s;
+}
+
+.theme-input:checked + .theme-label::after {
+    transform: translateX(32px);
+}
+
+/* Update header-content to align items */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.search-section {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    max-width: 600px;
+    gap: 10px;
+}
+
+
+
+/* Update the light theme variables in the existing :root[data-theme="light"] */
+:root[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-card: #ffffff;
+    --accent-primary: #6366f1;
+    --accent-secondary: #818cf8;
+    --accent-pink: #ec4899;
+    --accent-blue: #3b82f6;
+    --text-primary: #1e293b;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --success: #10b981;
+    --warning: #f59e0b;
+}
+
+/* Add these additional light theme styles */
+[data-theme="light"] .topic-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+[data-theme="light"] .code-block {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+}
+
+[data-theme="light"] .code-block code {
+    color: #2563eb;
+}
+
+[data-theme="light"] header {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid #e2e8f0;
+}
+
+[data-theme="light"] .search-box input {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    color: #1e293b;
+}
+
+[data-theme="light"] .nav-buttons {
+    background: rgba(255, 255, 255, 0.95);
+    border-top: 1px solid #e2e8f0;
+}
+
+[data-theme="light"] .tab-btn {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+}
+
+[data-theme="light"] .stats-bar {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+}
+
+[data-theme="light"] .tip-box {
+    background: rgba(16, 185, 129, 0.1);
+    border-left: 3px solid var(--success);
+    color: #065f46;
+}
+
+[data-theme="light"] .section-label {
+    color: #64748b;
+}
+
+[data-theme="light"] .topic-number {
+    color: #ffffff;
+}
+
+[data-theme="light"] .scroll-top {
+    background: var(--accent-primary);
+    color: #ffffff;
+}
+
+[data-theme="light"] .theme-label {
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+}
+
+[data-theme="light"] .install-popup {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="light"] .popup-content {
+    background: #ffffff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+[data-theme="light"] body {
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+}
+
+[data-theme="light"] .stat-value {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+/* Add these specific styles for light theme */
+[data-theme="light"] .tab-btn {
+    background: white;
+    border: 1px solid #e2e8f0;
+    color: #000000;
+}
+
+[data-theme="light"] .tab-btn:hover {
+    background: linear-gradient(135deg, #ac32e458, #7a18f266, #4901ff5f);
+    color: white;
+    border-color: transparent;
+}
+
+[data-theme="light"] .tab-btn.active {
+            background: linear-gradient(135deg, #AC32E4, #7918F2, #4801FF);
+    border-color: transparent;
+    color: whitesmoke;
+}
+
+
+/* Add these styles in your existing CSS */
+.nav-container {
+    position: relative;
+    max-width: 100%;
+    margin: 15px 0;
+    padding: 0 40px; /* Space for arrows */
+}
+
+.nav-tabs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    padding: 15px 0;
+}
+
+.nav-tabs::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+.scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #AC32E4, #7918F2, #4801FF);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.scroll-btn:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+.scroll-btn.left {
+    left: 0;
+}
+
+.scroll-btn.right {
+    right: 0;
+}
+
+.scroll-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Light theme specific styles */
+[data-theme="light"] .scroll-btn {
+    background: linear-gradient(135deg, #AC32E4, #7918F2, #4801FF);
+    color: white;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="pt3.png" alt="logo" style="width:100%; height:100%; object-fit:cover; border-radius:6px; display:block; align-items: center;" loading="lazy">
+                    </div>
+                    <span>PyPath Cheatsheet</span>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search topics...">
+                    <span class="search-icon"><i class="fa-solid fa-circle-arrow-right"></i></span>
+                </div>
+                <!-- Find the search-box div and add this after the search-icon span -->
+<div class="theme-toggle">
+    <input type="checkbox" id="theme-switch" class="theme-input">
+    <label for="theme-switch" class="theme-label">
+        <span class="theme-icon">🌙</span>
+        <span class="theme-icon">☀️</span>
+    </label>
+</div>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        /* Add before the existing script closing tag */
+// Theme Switcher
+const themeSwitch = document.getElementById('theme-switch');
+
+// Check for saved theme preference or default to dark
+const savedTheme = localStorage.getItem('theme') || 'dark';
+document.documentElement.setAttribute('data-theme', savedTheme);
+themeSwitch.checked = savedTheme === 'light';
+
+// Theme switch handler
+themeSwitch.addEventListener('change', function() {
+    const theme = this.checked ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+});
+
+// Add this JavaScript after your existing script
+function scrollTabs(direction) {
+    const tabsContainer = document.getElementById('navTabs');
+    const scrollAmount = 300; // Adjust this value for scroll distance
+    
+    if (direction === 'left') {
+        tabsContainer.scrollBy({
+            left: -scrollAmount,
+            behavior: 'smooth'
+        });
+    } else {
+        tabsContainer.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+    }
+    
+    // Update button states after scroll
+    updateScrollButtons();
+}
+
+function updateScrollButtons() {
+    const tabsContainer = document.getElementById('navTabs');
+    const leftBtn = document.getElementById('leftBtn');
+    const rightBtn = document.getElementById('rightBtn');
+    
+    // Check if scrolling is possible in either direction
+    leftBtn.disabled = tabsContainer.scrollLeft <= 0;
+    rightBtn.disabled = tabsContainer.scrollLeft >= (tabsContainer.scrollWidth - tabsContainer.clientWidth);
+}
+
+// Add scroll event listener to update buttons
+document.getElementById('navTabs').addEventListener('scroll', updateScrollButtons);
+
+// Update buttons when window resizes
+window.addEventListener('resize', updateScrollButtons);
+
+// Modify your existing renderNavTabs function
+function renderNavTabs() {
+    const navTabs = document.getElementById('navTabs');
+    navTabs.innerHTML = stageKeys.map((stage, idx) => 
+        `<button class="tab-btn ${idx === 1 ? 'active' : ''}" onclick="switchTab('${stage}', ${idx})">${stage}</button>`
+    ).join('');
+    
+    // Initialize scroll buttons
+    updateScrollButtons();
+}
+    </script>
+
+    <div class="container">
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-value">16</div>
+                <div class="stat-label">Stages</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">175+</div>
+                <div class="stat-label">Topics</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">100%</div>
+                <div class="stat-label">Free</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">∞</div>
+                <div class="stat-label">Learn</div>
+            </div>
+        </div>
+
+        <div class="nav-container">
+    <button class="scroll-btn left" onclick="scrollTabs('left')" id="leftBtn">
+        <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <div class="nav-tabs" id="navTabs">
+        <!-- Tabs will be inserted here by JavaScript -->
+    </div>
+    <button class="scroll-btn right" onclick="scrollTabs('right')" id="rightBtn">
+        <i class="fa-solid fa-chevron-right"></i>
+    </button>
+</div>
+
+        <!-- <div class="nav-tabs" id="navTabs"></div> -->
+        <div id="contentArea" class="content-section"></div>
+    </div>
+
+    <div class="nav-buttons">
+        <button class="nav-btn" id="prevBtn" onclick="navigateStage(-1)">
+            ← Previous
+        </button>
+        <button class="nav-btn" id="nextBtn" onclick="navigateStage(1)">
+            Next →
+        </button> <br>
+    </div>
+     <footer>
+        <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 10px; text-align: center;">
+            &copy; 2025 PyPath Cheatsheet. All rights reserved. | Built with ❤️ for Python learners. 
+        </footer>
+
+    <div class="scroll-top" id="scrollTop">↑</div>
+
+    <!-- Install App Popup -->
+<div id="install-popup" class="install-popup hidden">
+  <div class="popup-content">
+    <img src="pt.png" alt="App Logo" class="popup-logo">
+    <h2>Install Python Mastery App</h2>
+    <p>Learn Python anywhere — offline too!</p>
+    <button id="install-btn">Install Now</button>
+    <button id="close-popup">Maybe Later</button>
+  </div>
+</div>
+<script>
+    let deferredPrompt;
+const installPopup = document.getElementById('install-popup');
+const installBtn = document.getElementById('install-btn');
+const closePopup = document.getElementById('close-popup');
+
+// Check if already installed
+if (window.matchMedia('(display-mode: standalone)').matches || localStorage.getItem('appInstalled')) {
+  installPopup.classList.add('hidden');
+} else {
+  // Listen for beforeinstallprompt event
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installPopup.classList.remove('hidden'); // Show popup
+  });
+
+  // Install button click
+  installBtn.addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+      console.log('User accepted installation');
+      installPopup.classList.add('hidden');
+      localStorage.setItem('appInstalled', 'true');
+    }
+    deferredPrompt = null;
+  });
+
+  // Close button click
+  closePopup.addEventListener('click', () => {
+    installPopup.classList.add('hidden');
+  });
+
+  // When app is installed
+  window.addEventListener('appinstalled', () => {
+    console.log('App installed');
+    localStorage.setItem('appInstalled', 'true');
+    installPopup.classList.add('hidden');
+  });
+
+
+
+
+  
+}
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+
+
+    <script>
+        const pythonData = {
+ "Stage 0: Installation": [
+        {
+            num: 0.1, 
+            title: "Download Python", 
+            definition: "Download Python from the official website python.org", 
+            why: "Python needs to be installed before you can start programming", 
+            syntax: 'https://www.python.org/downloads/', 
+            example: '1. Go to python.org/downloads\n2. Click "Download Python 3.x.x"\n3. Select "Add python.exe to PATH"\n4. Click "Install Now"', 
+            tip: "Always select 'Add to PATH' during installation"
+        },
+        {
+            num: 0.2, 
+            title: "Verify Installation", 
+            definition: "Check if Python is installed correctly using Command Prompt", 
+            why: "Ensures Python is accessible from anywhere in your system", 
+            syntax: 'python --version\npip --version', 
+            example: '1. Open Command Prompt\n2. Type: python --version\n3. Should show: Python 3.x.x\n4. Type: pip --version\n5. Should show: pip x.x.x', 
+            tip: "If 'python not found', reinstall with 'Add to PATH' checked"
+        },
+        {
+            num: 0.3, 
+            title: "Install VS Code", 
+            definition: "Visual Studio Code is a popular code editor for Python", 
+            why: "VS Code provides great features for Python development", 
+            syntax: 'https://code.visualstudio.com/download', 
+            example: '1. Download VS Code\n2. Install VS Code\n3. Open VS Code\n4. Install Python extension\n5. Click Extensions (Ctrl+Shift+X)\n6. Search "Python"\n7. Install Python extension by Microsoft', 
+            tip: "Install Python extension for syntax highlighting and IntelliSense"
+        },
+        {
+            num: 0.4, 
+            title: "Install PyCharm (Optional)", 
+            definition: "PyCharm is a dedicated Python IDE by JetBrains", 
+            why: "Provides advanced features for large Python projects", 
+            syntax: 'https://www.jetbrains.com/pycharm/download/', 
+            example: '1. Download PyCharm Community (Free)\n2. Run installer\n3. Select: Create Desktop Shortcut\n4. Select: Update PATH variable\n5. Click Install', 
+            tip: "Community Edition is free and perfect for learning"
+        },
+        {
+            num: 0.5, 
+            title: "Essential Python Packages", 
+            definition: "Install commonly used Python packages using pip", 
+            why: "These packages are needed for various Python projects", 
+            syntax: 'pip install package_name', 
+            example: 'pip install numpy pandas matplotlib\npip install jupyter requests\npip install scikit-learn\npip install flask django', 
+            tip: "Use 'pip list' to see installed packages"
+        },
+        {
+            num: 0.6, 
+            title: "Virtual Environment Setup", 
+            definition: "Create isolated Python environments for projects", 
+            why: "Prevents package conflicts between projects", 
+            syntax: 'python -m venv myenv\nmyenv\\Scripts\\activate', 
+            example: '1. Open Command Prompt\n2. Go to project folder\n3. Run: python -m venv env\n4. Run: env\\Scripts\\activate\n5. Install packages: pip install package_name', 
+            tip: "Create new venv for each project"
+        },
+        {
+            num: 0.7, 
+            title: "Git Installation (Optional)", 
+            definition: "Version control system for tracking code changes", 
+            why: "Essential for code backup and collaboration", 
+            syntax: 'https://git-scm.com/downloads', 
+            example: '1. Download Git for Windows\n2. Run installer\n3. Use default options\n4. Select: Git from command line\n5. Select: Use VS Code as editor', 
+            tip: "Use GitHub Desktop for visual Git interface"
+        },
+        {
+            num: 0.8, 
+            title: "First Python Program", 
+            definition: "Create and run your first Python program", 
+            why: "Verify everything is set up correctly", 
+            syntax: 'print("Hello, Python!")', 
+            example: '1. Open VS Code\n2. Create new file: hello.py\n3. Type: print("Hello, Python!")\n4. Save file\n5. Right-click → Run Python File\n6. Should see output in terminal', 
+            tip: "If it works, you're ready to start learning Python!"
+        }
+    ],
+
+            "Stage 1": [
+                {num: 1, title: "Introduction to Python", definition: "Python is a high-level, beginner-friendly programming language known for its simple syntax and wide use in web development, data science, automation, and AI.", why: "Used everywhere — websites (Django, Flask), machine learning (TensorFlow, PyTorch), scripting, data analysis, and automation tasks.", syntax: 'print("Welcome to Python!")', example: 'print("Hello, Python Learner!")', tip: "Python code runs line by line (interpreted), so you can test ideas quickly."},
+                {num: 2, title: "Your First Python Program", definition: "A Python program is a .py file that contains instructions for the computer to execute.", why: "To create programs that perform tasks — like calculators, chatbots, or games.", syntax: 'python filename.py', example: 'print("This is my first Python program!")', tip: "Always save your file with .py extension (like main.py)."},
+                {num: 3, title: "Syntax, Indentation & Comments", definition: "Python uses indentation (spaces) to define code blocks. Comments are notes ignored by Python.", why: "Indentation keeps code readable; comments help explain logic or steps.", syntax: '# This is a comment\nif True:\n    print("Indented properly")', example: 'for i in range(3):\n    print("Loop", i)', tip: "Always use 4 spaces per indent — not tabs."},
+                {num: 4, title: "Variables & Data Types", definition: "Variables are names used to store data. Data types define what kind of data is stored.", why: "Used everywhere to store user data, calculations, or program information.", syntax: 'variable_name = value', example: 'name = "vG.20"\nage = 20\nis_coder = True', tip: "Use type() to check the data type."},
+                {num: 5, title: "Numbers & Math Operations", definition: "Python supports arithmetic operations like +, -, *, /, %, etc.", why: "Used for calculations, data analysis, gaming logic, and AI models.", syntax: '+ - * / // ** %', example: 'a, b = 10, 3\nprint(a + b)\nprint(a ** b)', tip: "Use import math for advanced operations."},
+                {num: 6, title: "Strings — Basics", definition: "A string is a sequence of characters enclosed in quotes.", why: "Used to handle text — names, messages, file paths, etc.", syntax: 'text = "Python"', example: 'text = "Python"\nprint(text[0])\nprint(text[-1])', tip: "Strings are immutable (cannot be changed directly)."},
+                {num: 7, title: "String Methods & Formatting", definition: "Methods help modify or analyze strings. Formatting helps insert variables into text.", why: "Used to clean, join, or display text properly.", syntax: 'string.method()\nf"text {var}"', example: 'msg = " hello "\nprint(msg.strip().title())', tip: "strip() removes spaces, replace() swaps words."},
+                {num: 8, title: "Input & Output", definition: "input() collects user input; print() displays output.", why: "Used to make interactive programs.", syntax: 'input("message")\nprint("message")', example: 'name = input("Enter name: ")\nprint("Hello", name)', tip: "input() returns a string by default."},
+                {num: 9, title: "Type Casting", definition: "Converting a variable's data type manually (e.g., string → int).", why: "Useful when reading input or doing mathematical operations.", syntax: 'int(), float(), str(), bool()', example: 'a = "10"\nb = int(a)\nprint(b, type(b))', tip: "Avoid converting non-numeric strings to numbers."},
+                {num: 10, title: "Operators", definition: "Symbols used to perform operations (math, comparison, logical).", why: "Used to perform decisions, calculations, and data comparisons.", syntax: '+ - * / % ** // == != > < and or not', example: 'x, y = 5, 3\nprint(x + y)\nprint(x > y and y < 5)', tip: "Use parentheses for clarity."},
+                {num: 11, title: "Conditional Statements", definition: "Used to make decisions in code — run different blocks depending on conditions.", why: "Used in authentication, validation, or game logic.", syntax: 'if condition:\n    code\nelif condition:\n    code\nelse:\n    code', example: 'x = 10\nif x > 0:\n    print("Positive")\nelse:\n    print("Negative")', tip: "Conditions must return True or False."},
+                {num: 12, title: "Loops", definition: "Used to repeat actions multiple times.", why: "Used in automation, repeating patterns, or iterating lists.", syntax: 'for var in sequence:\n    code\nwhile condition:\n    code', example: 'for i in range(3):\n    print(i)', tip: "Use break to stop, continue to skip."},
+                {num: 13, title: "Range() & Enumerate()", definition: "range() creates a sequence of numbers; enumerate() adds an index counter.", why: "Useful for indexed loops and numbered lists.", syntax: 'range(start, stop, step)\nenumerate(iterable)', example: 'for i in range(1, 6):\n    print(i)', tip: "range() never includes the stop value."},
+                {num: 14, title: "Nested Loops", definition: "A loop inside another loop.", why: "Used for patterns, matrices, and combinations.", syntax: 'for i in range(x):\n    for j in range(y):\n        code', example: 'for i in range(2):\n    for j in range(3):\n        print(i, j)', tip: "Avoid deep nesting to keep code readable."},
+                {num: 15, title: "Functions", definition: "Reusable blocks of code that perform a task.", why: "Used to avoid repetition and make code modular.", syntax: 'def function_name(parameters):\n    code\n    return value', example: 'def greet(name):\n    return f"Hello {name}!"\nprint(greet("vG"))', tip: "Always use meaningful names for functions."},
+                {num: 16, title: "*args & **kwargs", definition: "Used for flexible number of parameters in functions. *args for multiple values, **kwargs for key-value pairs.", why: "Used when you don't know how many inputs you'll receive.", syntax: 'def func(*args, **kwargs):\n    code', example: 'def show(*args, **kwargs):\n    print(args)\n    print(kwargs)', tip: "args is a tuple, kwargs is a dictionary."},
+                {num: 17, title: "Lambda Functions", definition: "A small one-line anonymous function (no def keyword).", why: "Used for quick operations like sorting, mapping, or filtering.", syntax: 'lambda arguments: expression', example: 'square = lambda x: x*x\nprint(square(5))', tip: "Use only for short tasks."},
+                {num: 18, title: "Scope & Global Variables", definition: "Scope defines where a variable is accessible. global keyword makes a variable available everywhere.", why: "Helps control where variables exist to avoid conflicts.", syntax: 'global variable_name', example: 'x = 10\ndef modify():\n    global x\n    x = 20', tip: "Avoid too many global variables."}
+            ],
+            "Stage 2": [
+                {num: 19, title: "Lists — Creation, Access, Modification", definition: "A list is a collection of ordered, changeable items enclosed in square brackets [].", why: "Used to store multiple related values — like names, marks, or items in a shopping cart.", syntax: 'list_name = [item1, item2, item3]', example: 'fruits = ["apple", "banana"]\nprint(fruits[0])\nfruits[1] = "grape"', tip: "Use list() to convert other data types."},
+                {num: 20, title: "List Comprehensions", definition: "A short way to create lists using a loop inside brackets.", why: "Saves time and makes code cleaner.", syntax: '[new_item for item in iterable if condition]', example: 'squares = [x**2 for x in range(5)]\nprint(squares)', tip: "You can add conditions for filtering."},
+                {num: 21, title: "Tuples — Immutable Data", definition: "A tuple is like a list but cannot be changed (immutable).", why: "Used to store fixed collections like coordinates.", syntax: 'tuple_name = (item1, item2)', example: 'point = (10, 20)\nprint(point[0])', tip: "Use tuples when data must not change."},
+                {num: 22, title: "Sets — Unique Data Handling", definition: "A set is an unordered collection of unique elements.", why: "Used to remove duplicates or perform math operations.", syntax: 'set_name = {value1, value2}', example: 'numbers = {1, 2, 2, 3}\nprint(numbers)', tip: "Sets don't support indexing."},
+                {num: 23, title: "Dictionaries — Key/Value Data", definition: "A dictionary stores data as key–value pairs.", why: "Used for mapping — like user profiles, records.", syntax: 'dict_name = {"key": "value"}', example: 'student = {"name": "vG", "age": 20}\nprint(student["name"])', tip: "Use .get(key) to avoid KeyError."},
+                {num: 24, title: "Nested Data Structures", definition: "A collection that contains another collection.", why: "Used in complex data like JSON, database records.", syntax: 'nested = {"user1": {"name": "vG"}}', example: 'users = [{"name": "vG"}]\nprint(users[0]["name"])', tip: "Access inner data step by step."},
+                {num: 25, title: "Iterating Collections", definition: "Looping through all elements in a collection.", why: "Used to process, filter, or print every value.", syntax: 'for item in collection:\n    print(item)', example: 'fruits = ["apple", "banana"]\nfor fruit in fruits:\n    print(fruit)', tip: "Use .items() for dictionaries."},
+                {num: 26, title: "Built-in Functions for Collections", definition: "Python provides built-in functions to work with sequences.", why: "Used for quick calculations or summaries.", syntax: 'len(), sum(), min(), max(), sorted()', example: 'nums = [2, 4, 6]\nprint(len(nums))\nprint(sum(nums))', tip: "sorted() returns a new list."},
+                {num: 27, title: "Copying, Joining & Comparing", definition: "Copying duplicates data; joining merges two.", why: "Used to handle large data safely.", syntax: 'copy_list = old_list.copy()\ncombined = list1 + list2', example: 'a = [1, 2, 3]\nb = a.copy()\nb.append(4)', tip: "Always use .copy() to avoid reference issues."},
+                {num: 28, title: "Sorting & Filtering Data", definition: "Used to order and filter items from collections.", why: "Essential for organizing data.", syntax: 'sorted(list)\nfilter(function, iterable)', example: 'nums = [5, 1, 3, 2]\nprint(sorted(nums))', tip: "Use key parameter for custom sorting."}
+            ],
+            "Stage 3": [
+                {num: 29, title: "File Handling", definition: "File handling lets your Python program store and retrieve data permanently.", why: "Used in almost all real-world applications.", syntax: 'open(filename, mode)', example: 'with open("data.txt", "w") as f:\n    f.write("Hello!")\nwith open("data.txt", "r") as f:\n    print(f.read())', tip: "Always use with statement."},
+                {num: 30, title: "Working with JSON & CSV", definition: "JSON and CSV are popular formats for storing structured data.", why: "Used in APIs, databases, and data analytics.", syntax: 'import json, csv', example: 'import json\ndata = {"name": "vG"}\njson.dump(data, open("data.json","w"))', tip: "Use json.dump() for files."},
+                {num: 31, title: "Try–Except–Finally", definition: "Exceptions are runtime errors; try-except handles them gracefully.", why: "Used to prevent program crashes.", syntax: 'try:\n    code\nexcept Exception:\n    handle\nfinally:\n    cleanup', example: 'try:\n    x = 10/0\nexcept ZeroDivisionError:\n    print("Cannot divide by zero!")', tip: "Always handle specific exceptions first."},
+                {num: 32, title: "Custom Exceptions", definition: "You can create your own error types for special conditions.", why: "Used in large applications for meaningful errors.", syntax: 'class MyError(Exception):\n    pass', example: 'class UnderAgeError(Exception):\n    pass\nraise UnderAgeError("Must be 18+")', tip: "Name custom exceptions ending with Error."}
+            ],
+            "Stage 4": [
+                {num: 33, title: "Importing & Using Modules", definition: "A module is a Python file containing code that you can reuse.", why: "Used to keep code organized and reusable.", syntax: 'import module_name', example: 'import math\nprint(math.sqrt(16))', tip: "Use 'as' to rename modules."},
+                {num: 34, title: "Creating Custom Modules", definition: "You can create your own module by saving functions in a .py file.", why: "Used to split large projects into smaller files.", syntax: '# mymodule.py\ndef greet(name):\n    return f"Hello {name}"', example: 'import mymodule\nprint(mymodule.greet("vG"))', tip: "Both files must be in same folder."},
+                {num: 35, title: "Built-in Modules", definition: "Python comes with a large standard library.", why: "Used to save time — no need to code manually.", syntax: 'import os, random, datetime', example: 'import random\nprint(random.randint(1, 10))', tip: "Use dir(module) to explore functions."},
+                {num: 36, title: "Virtual Environments", definition: "A virtual environment is an isolated Python setup for each project.", why: "Prevents package version conflicts.", syntax: 'python -m venv env\nenv\\Scripts\\activate', example: 'python -m venv myenv\nmyenv\\Scripts\\activate\npip install requests', tip: "Each project should have its own venv."},
+                {num: 37, title: "Package Management (pip)", definition: "pip is Python's package installer.", why: "Used to quickly add external libraries.", syntax: 'pip install package_name\npip freeze > requirements.txt', example: 'pip install requests\nimport requests', tip: "Use requirements.txt to share dependencies."}
+            ],
+            "Stage 5": [
+                {num: 38, title: "Introduction to OOP", definition: "Object-Oriented Programming uses classes and objects.", why: "Used to model real-world systems.", syntax: 'class ClassName:\n    pass', example: 'class Car:\n    def __init__(self, brand):\n        self.brand = brand', tip: "__init__() is the constructor."},
+                {num: 39, title: "Class and Object", definition: "Class is a blueprint; Object is an instance.", why: "Use classes when multiple objects share structure.", syntax: 'obj = ClassName()', example: 'car1 = Car("Tesla")\nprint(car1.brand)', tip: "Each object has its own instance variables."},
+                {num: 40, title: "Methods", definition: "Methods are functions defined inside a class.", why: "Used to give behavior to objects.", syntax: 'def method(self):\n    code', example: 'class Student:\n    def show(self):\n        print(self.name)', tip: "Always include self as first parameter."},
+                {num: 41, title: "Class vs Instance Variables", definition: "Instance variables are unique per object; class variables are shared.", why: "Used when you need shared information.", syntax: 'class Student:\n    school = "ABC"', example: 's1 = Student("vG")\nprint(s1.school)', tip: "Access class variables via class name."},
+                {num: 42, title: "Inheritance", definition: "Inheritance lets one class use properties of another.", why: "Used to reuse and extend code.", syntax: 'class Child(Parent):', example: 'class Vehicle:\n    def move(self): pass\nclass Car(Vehicle):\n    def move(self): print("Driving")', tip: "Child can override parent methods."},
+                {num: 43, title: "Types of Inheritance", definition: "Single, Multiple, Multilevel, Hierarchical, Hybrid.", why: "Different patterns for different needs.", syntax: 'class C(A, B):', example: 'class A:\n    pass\nclass B(A):\n    pass', tip: "Use super() to call parent methods."},
+                {num: 44, title: "Polymorphism", definition: "Same method name behaves differently depending on class.", why: "Used for flexibility in code.", syntax: 'def method(self):\n    pass', example: 'class Bird:\n    def sound(self): print("Tweet")\nclass Dog:\n    def sound(self): print("Bark")', tip: "Enables method overriding."},
+                {num: 45, title: "Encapsulation", definition: "Encapsulation hides data from direct modification.", why: "Protects sensitive data.", syntax: 'self.__private', example: 'class Bank:\n    def __init__(self):\n        self.__balance = 0', tip: "Private variables use double underscores."},
+                {num: 46, title: "Abstraction", definition: "Abstraction hides complex details and shows essentials.", why: "Used to design clean interfaces.", syntax: 'from abc import ABC, abstractmethod', example: 'class Shape(ABC):\n    @abstractmethod\n    def area(self): pass', tip: "Abstract classes can't be instantiated."},
+                {num: 47, title: "Magic (Dunder) Methods", definition: "Special methods like __init__, __str__, __add__.", why: "Used to make classes behave like built-ins.", syntax: 'def __str__(self):\n    return "text"', example: 'class Point:\n    def __str__(self):\n        return f"({self.x}, {self.y})"', tip: "Common ones: __init__, __str__, __add__."}
+            ],
+            "Stage 6": [
+                {num: 48, title: "File Handling in Python", definition: "Read, write, and modify files.", why: "Used in data logging, automation.", syntax: 'open(filename, mode)', example: 'with open("data.txt", "w") as f:\n    f.write("Hello")', tip: "Always use with for safe closing."},
+                {num: 49, title: "Using with (Context Manager)", definition: "with statement automatically closes files.", why: "Used for safe and clean file handling.", syntax: 'with open("file.txt", "r") as f:\n    data = f.read()', example: 'with open("data.txt", "r") as f:\n    print(f.read())', tip: "No need for .close() manually."},
+                {num: 50, title: "Reading and Writing Lines", definition: "Handle files line by line for large data.", why: "Used when processing logs or records.", syntax: 'file.readlines()\nfile.writelines()', example: 'lines = ["Line1\\n", "Line2\\n"]\nwith open("file.txt", "w") as f:\n    f.writelines(lines)', tip: "Use .strip() to remove newlines."},
+                {num: 51, title: "Working with JSON", definition: "JSON is a lightweight format for structured data.", why: "Used for data exchange between apps.", syntax: 'import json\njson.dumps()\njson.loads()', example: 'import json\ndata = {"name": "vG"}\njson_str = json.dumps(data)', tip: "Use indent=4 for readable formatting."},
+                {num: 52, title: "Working with CSV Files", definition: "CSV stores data in table format.", why: "Used for data science and analytics.", syntax: 'import csv', example: 'import csv\nwith open("data.csv", "w") as f:\n    writer = csv.writer(f)\n    writer.writerow(["Name", "Age"])', tip: "Use DictReader for column access."},
+                {num: 53, title: "Exception Handling (try-except)", definition: "Handle errors gracefully using try-except.", why: "Prevents app crashes.", syntax: 'try:\n    code\nexcept ExceptionType:\n    handle', example: 'try:\n    a = int(input())\nexcept ValueError:\n    print("Invalid input!")', tip: "Use Exception as e for dynamic errors."},
+                {num: 54, title: "Finally & Else in Exceptions", definition: "else runs if no exception; finally always runs.", why: "Used to release resources or log results.", syntax: 'try:\n    code\nexcept:\n    handle\nelse:\n    success\nfinally:\n    cleanup', example: 'try:\n    f = open("file.txt")\nexcept:\n    print("Error")\nfinally:\n    f.close()', tip: "Use finally for cleanup tasks."},
+                {num: 55, title: "Raising Exceptions", definition: "Manually raise exceptions using raise keyword.", why: "Used for custom error control.", syntax: 'raise Exception("message")', example: 'def divide(a, b):\n    if b == 0:\n        raise ValueError("b cannot be zero")', tip: "Create custom exception classes."}
+            ],
+            "Stage 7": [
+                {num: 56, title: "Lambda Functions", definition: "Small one-line anonymous functions.", why: "Used for quick, short functions.", syntax: 'lambda args: expression', example: 'square = lambda x: x * x\nprint(square(5))', tip: "Use lambda for short tasks only."},
+                {num: 57, title: "Map, Filter, Reduce", definition: "map() applies function; filter() filters; reduce() reduces to one value.", why: "Used for data transformations.", syntax: 'map(func, iterable)\nfilter(func, iterable)', example: 'nums = [1, 2, 3, 4]\nprint(list(map(lambda x: x**2, nums)))', tip: "Use list() around map() and filter()."},
+                {num: 58, title: "Iterators", definition: "An object that can be iterated using next().", why: "Used for lazy evaluation.", syntax: 'iter_obj = iter(iterable)\nnext(iter_obj)', example: 'nums = [10, 20, 30]\nit = iter(nums)\nprint(next(it))', tip: "for loops use iterators internally."},
+                {num: 59, title: "Generators", definition: "Functions that yield values one by one.", why: "Memory-efficient for large data streams.", syntax: 'def generator():\n    yield value', example: 'def count(n):\n    i = 1\n    while i <= n:\n        yield i\n        i += 1', tip: "Generators remember their state."},
+                {num: 60, title: "Decorators", definition: "A decorator modifies function behavior without changing its code.", why: "Used for logging, authentication, timing.", syntax: 'def decorator(func):\n    def wrapper():\n        func()\n    return wrapper', example: '@decorator\ndef greet():\n    print("Hello!")', tip: "You can stack multiple decorators."},
+                {num: 61, title: "*args and **kwargs", definition: "*args for variable positional arguments; **kwargs for keyword arguments.", why: "Used when argument count is unknown.", syntax: 'def func(*args, **kwargs):\n    pass', example: 'def show(*args, **kwargs):\n    print(args, kwargs)', tip: "*args is tuple, **kwargs is dict."},
+                {num: 62, title: "Enumerate() Function", definition: "enumerate() adds counter/index to items.", why: "Used in loops needing both index and value.", syntax: 'for i, val in enumerate(iterable):', example: 'names = ["vG", "John"]\nfor i, name in enumerate(names, 1):\n    print(i, name)', tip: "You can start numbering from any value."},
+                {num: 63, title: "Zip() Function", definition: "zip() combines multiple iterables element-wise.", why: "Used to pair or merge data.", syntax: 'zip(iter1, iter2)', example: 'names = ["vG", "John"]\nscores = [95, 88]\nfor n, s in zip(names, scores):\n    print(n, s)', tip: "Convert to dict: dict(zip(keys, values))."},
+                {num: 64, title: "List Comprehensions (Advanced)", definition: "Quick way to create lists in one line.", why: "Used for cleaner, faster transformations.", syntax: '[expr for item in iterable if condition]', example: 'nums = [1, 2, 3, 4, 5]\nsquares = [n*n for n in nums if n%2==0]', tip: "Also available: dict, set comprehensions."},
+                {num: 65, title: "Context Managers (Custom)", definition: "Manage resources automatically like with open().", why: "Used to ensure proper cleanup.", syntax: 'class Manager:\n    def __enter__(self):\n        pass\n    def __exit__(self, *args):\n        pass', example: 'with MyManager():\n    print("Inside context")', tip: "Use contextlib module for simpler managers."}
+            ],
+            "Stage 8": [
+                {num: 66, title: "os Module", definition: "Interact with the operating system.", why: "Used for automation scripts and file management.", syntax: 'import os', example: 'import os\nprint(os.getcwd())\nos.mkdir("folder")', tip: "Use os.path.join() for cross-platform paths."},
+                {num: 67, title: "sys Module", definition: "Access to system-specific parameters.", why: "Used to handle command-line arguments.", syntax: 'import sys', example: 'import sys\nprint(sys.version)\nprint(sys.argv)', tip: "Use sys.path.append() for custom paths."},
+                {num: 68, title: "datetime Module", definition: "Work with dates and times.", why: "Used in logging, scheduling, timestamps.", syntax: 'from datetime import datetime', example: 'from datetime import datetime\nnow = datetime.now()\nprint(now)', tip: "Use .strftime() to format dates."},
+                {num: 69, title: "math Module", definition: "Mathematical functions like sqrt, power, trigonometry.", why: "Used in numerical programs.", syntax: 'import math', example: 'import math\nprint(math.sqrt(16))\nprint(math.pi)', tip: "Use math.isclose() for float comparison."},
+                {num: 70, title: "random Module", definition: "Generate random numbers or pick random elements.", why: "Used in games, testing, simulations.", syntax: 'import random', example: 'import random\nprint(random.randint(1, 10))\nprint(random.choice(["a", "b", "c"]))', tip: "Use random.seed() for reproducibility."},
+                {num: 71, title: "collections Module", definition: "Enhanced data structures like Counter, deque.", why: "Used for counting and efficient queues.", syntax: 'from collections import Counter', example: 'from collections import Counter\nnums = [1, 2, 2, 3, 3, 3]\nprint(Counter(nums))', tip: "Counter.most_common() finds top occurrences."},
+                {num: 72, title: "re (Regular Expressions)", definition: "Pattern matching and text searching.", why: "Used in text analysis and validation.", syntax: 'import re', example: 'import re\ntext = "Email: test@example.com"\nmatch = re.search(r"\\b[\\w.-]+@[\\w.-]+\\.\\w+\\b", text)', tip: "Use re.findall() for all matches."},
+                {num: 73, title: "statistics Module", definition: "Basic statistical functions.", why: "Used in data analytics.", syntax: 'import statistics', example: 'import statistics\ndata = [10, 20, 30]\nprint(statistics.mean(data))', tip: "Combine with Counter for insights."},
+                {num: 74, title: "json Module", definition: "Convert Python objects to JSON and back.", why: "Used for saving configs and APIs.", syntax: 'import json', example: 'import json\ndata = {"name": "vG"}\njson_str = json.dumps(data)', tip: "Use indent=4 for pretty print."},
+                {num: 75, title: "logging Module", definition: "Record program messages for debugging.", why: "Used in production apps to monitor behavior.", syntax: 'import logging', example: 'import logging\nlogging.basicConfig(level=logging.INFO)\nlogging.info("Program started")', tip: "Use logging.FileHandler() to save logs."},
+                {num: 76, title: "shutil Module", definition: "File and folder operations like copying.", why: "Used in automation and backups.", syntax: 'import shutil', example: 'import shutil\nshutil.copy("file.txt", "backup.txt")', tip: "Use shutil.rmtree() to remove directories."},
+                {num: 77, title: "urllib Module", definition: "Handle URLs and make HTTP requests.", why: "Used in web scraping and APIs.", syntax: 'import urllib.request', example: 'import urllib.request\nresponse = urllib.request.urlopen("https://python.org")', tip: "For advanced use, switch to requests library."},
+                {num: 78, title: "pathlib Module", definition: "Modern way to handle filesystem paths.", why: "Used for clean file operations.", syntax: 'from pathlib import Path', example: 'from pathlib import Path\np = Path(".")\nfor file in p.iterdir():\n    print(file)', tip: "Works across OS platforms."},
+                {num: 79, title: "time Module", definition: "Handle delays and time measurement.", why: "Used in automation and performance testing.", syntax: 'import time', example: 'import time\nprint(time.time())\ntime.sleep(2)', tip: "Use time.perf_counter() for precision."},
+                {num: 80, title: "itertools Module", definition: "Efficient looping and combination tools.", why: "Used in data analysis and permutations.", syntax: 'import itertools', example: 'import itertools\nnums = [1, 2, 3]\nprint(list(itertools.permutations(nums)))', tip: "Use itertools.cycle() for infinite loops."}
+            ],
+            "Stage 9": [
+                {num: 81, title: "File Handling (Text & Binary)", definition: "Read, write, and modify files.", why: "Used for saving data, logs, reports.", syntax: 'open(filename, mode)', example: 'with open("data.txt", "w") as f:\n    f.write("Hello")', tip: "Always use with for auto-closing."},
+                {num: 82, title: "CSV Files", definition: "Read and write spreadsheet-like data.", why: "Used in data analytics and reporting.", syntax: 'import csv', example: 'import csv\nwith open("data.csv", "w") as f:\n    writer = csv.writer(f)\n    writer.writerow(["Name", "Age"])', tip: "Use DictReader for column-based access."},
+                {num: 83, title: "Excel File Handling (openpyxl)", definition: "Read and write Excel .xlsx files.", why: "Used in business data automation.", syntax: 'from openpyxl import Workbook', example: 'from openpyxl import Workbook\nwb = Workbook()\nws = wb.active\nws.append(["Name", "Marks"])', tip: "Use load_workbook() for existing files."},
+                {num: 84, title: "Working with JSON", definition: "Store and transfer structured data.", why: "Used in web APIs and configs.", syntax: 'import json', example: 'import json\ndata = {"name": "vG"}\njson_str = json.dumps(data, indent=4)', tip: "Use json.dump() for files."},
+                {num: 85, title: "SQLite (Built-in Database)", definition: "Create and manage lightweight SQL databases.", why: "Used in small apps and testing.", syntax: 'import sqlite3', example: 'import sqlite3\nconn = sqlite3.connect("db.db")\ncursor = conn.cursor()\ncursor.execute("CREATE TABLE users (name TEXT)")', tip: "Use with for auto-handling."},
+                {num: 86, title: "Fetching API Data (requests)", definition: "Send HTTP requests to get web data.", why: "Used in web scraping and APIs.", syntax: 'import requests', example: 'import requests\nresponse = requests.get("https://api.github.com")\nprint(response.json())', tip: "Always check status_code == 200."},
+                {num: 87, title: "Pickle (Save Python Objects)", definition: "Save and load Python objects in binary.", why: "Used to save models or program states.", syntax: 'import pickle', example: 'import pickle\ndata = {"name": "vG"}\nwith open("save.pkl", "wb") as f:\n    pickle.dump(data, f)', tip: "Never unpickle untrusted data."},
+                {num: 88, title: "Pandas (DataFrames)", definition: "Handle tabular data like Excel.", why: "Used for data science and analytics.", syntax: 'import pandas as pd', example: 'import pandas as pd\ndf = pd.DataFrame({"Name": ["vG"], "Marks": [95]})\nprint(df)', tip: "Use .head() and .describe() to explore data."},
+                {num: 89, title: "NumPy (Numerical Data)", definition: "Fast numerical computing using arrays.", why: "Used in data science and AI.", syntax: 'import numpy as np', example: 'import numpy as np\narr = np.array([1, 2, 3, 4])\nprint(arr * 2)', tip: "NumPy operations are vectorized and faster."},
+                {num: 90, title: "Handling Large Files (Chunks)", definition: "Read large files in chunks instead of all at once.", why: "Used in data engineering.", syntax: 'for line in file:\n    process(line)', example: 'with open("bigdata.txt") as f:\n    for line in f:\n        print(line.strip())', tip: "Use pandas chunksize for big CSVs."}
+            ],
+            "Stage 10": [
+                {num: 91, title: "Web Scraping (BeautifulSoup)", definition: "Extract data from websites.", why: "Used for data collection and research.", syntax: 'from bs4 import BeautifulSoup', example: 'from bs4 import BeautifulSoup\nimport requests\nres = requests.get("https://quotes.toscrape.com")\nsoup = BeautifulSoup(res.text, "html.parser")', tip: "Use soup.find() for single elements."},
+                {num: 92, title: "Sending Emails (smtplib)", definition: "Send emails using SMTP servers.", why: "Used in notification systems.", syntax: 'import smtplib', example: 'import smtplib\nfrom email.mime.text import MIMEText\nmsg = MIMEText("Hello!")', tip: "Enable App Passwords for Gmail."},
+                {num: 93, title: "Excel Automation (openpyxl)", definition: "Automate Excel tasks.", why: "Used in report generation.", syntax: 'from openpyxl import load_workbook', example: 'from openpyxl import Workbook\nwb = Workbook()\nws = wb.active\nws.append(["Product", "Price"])', tip: "Use openpyxl.styles for formatting."},
+                {num: 94, title: "Automate Files & Folders", definition: "Move, rename, delete files using os and shutil.", why: "Used for auto backups.", syntax: 'import os, shutil', example: 'import os, shutil\nfor file in os.listdir("Downloads"):\n    if file.endswith(".pdf"):\n        shutil.move(file, "PDFs/")', tip: "Use os.path.exists() before moving."},
+                {num: 95, title: "Automate Web Tasks (Selenium)", definition: "Automate browsers for testing.", why: "Used for web testing and scraping.", syntax: 'from selenium import webdriver', example: 'from selenium import webdriver\ndriver = webdriver.Chrome()\ndriver.get("https://google.com")', tip: "Use headless mode for faster execution."},
+                {num: 96, title: "Automate Messages (pywhatkit)", definition: "Automate chat messages.", why: "Used in marketing and alerts.", syntax: 'import pywhatkit', example: 'import pywhatkit\npywhatkit.sendwhatmsg("+91", "Hi!", 19, 45)', tip: "Keep WhatsApp Web logged in."},
+                {num: 97, title: "Download & Upload Automation", definition: "Automate file downloads/uploads.", why: "Used in data syncing.", syntax: 'import requests', example: 'import requests\nurl = "https://example.com/file.txt"\nr = requests.get(url)\nwith open("file.txt", "wb") as f:\n    f.write(r.content)', tip: "Use .iter_content() for large files."},
+                {num: 98, title: "Automate Data Reports", definition: "Generate data summaries automatically.", why: "Used in business dashboards.", syntax: 'import pandas as pd', example: 'import pandas as pd\ndf = pd.read_csv("sales.csv")\nsummary = df.groupby("Region")["Sales"].sum()', tip: "Combine with schedule for daily runs."},
+                {num: 99, title: "Task Scheduling (schedule)", definition: "Run tasks automatically at specific times.", why: "Used for daily scripts.", syntax: 'import schedule', example: 'import schedule, time\ndef greet():\n    print("Hello!")\nschedule.every(10).seconds.do(greet)', tip: "Use Cron jobs for background execution."},
+                {num: 100, title: "Auto Screenshot Organizer", definition: "Automatically move screenshots to folder.", why: "Used for desktop cleanup.", syntax: 'import os, shutil', example: 'import os, shutil\nfor f in os.listdir():\n    if "Screenshot" in f:\n        shutil.move(f, "Screenshots/")', tip: "Run as background process."}
+            ],
+            "Stage 11": [
+                {num: 101, title: "Introduction to GUI", definition: "GUI lets users interact with programs using windows and buttons.", why: "Used to build desktop apps.", syntax: 'import tkinter', example: 'import tkinter as tk\nroot = tk.Tk()\nroot.title("My App")\nroot.mainloop()', tip: "Always use .mainloop() to keep window open."},
+                {num: 102, title: "Tkinter Widgets", definition: "Widgets are GUI elements like buttons and labels.", why: "They form building blocks of apps.", syntax: 'tk.Label(), tk.Button(), tk.Entry()', example: 'import tkinter as tk\nroot = tk.Tk()\ntk.Label(root, text="Hello").pack()\nroot.mainloop()', tip: "Use command= to connect functions."},
+                {num: 103, title: "Layout Management", definition: "pack, grid, place to position widgets.", why: "To arrange widgets properly.", syntax: 'widget.pack()\nwidget.grid(row=0, column=1)', example: 'label = tk.Label(root, text="Name")\nlabel.grid(row=0, column=0)', tip: "Use .grid() for structured forms."},
+                {num: 104, title: "MessageBox & File Dialog", definition: "Show pop-ups or open/save file dialogs.", why: "Used in alert boxes and file uploaders.", syntax: 'from tkinter import messagebox', example: 'from tkinter import messagebox\nmessagebox.showinfo("Info", "Welcome!")', tip: "Use .withdraw() to hide main window."},
+                {num: 105, title: "CustomTkinter", definition: "Modern themes and styles for Tkinter.", why: "Used for dark/light themes.", syntax: 'import customtkinter as ctk', example: 'import customtkinter as ctk\napp = ctk.CTk()\nctk.set_appearance_mode("dark")\napp.mainloop()', tip: "Use CTkButton for modern buttons."},
+                {num: 106, title: "PyQt5", definition: "Professional GUI framework.", why: "Used in industry-level apps.", syntax: 'from PyQt5.QtWidgets import *', example: 'from PyQt5.QtWidgets import *\napp = QApplication([])\nwindow = QWidget()\nwindow.show()\napp.exec_()', tip: "Use Qt Designer for drag-drop UI."},
+                {num: 107, title: "Streamlit", definition: "Create interactive web apps from Python.", why: "Used for dashboards and ML demos.", syntax: 'import streamlit as st', example: 'import streamlit as st\nst.title("Dashboard")\nname = st.text_input("Name")', tip: "No HTML/CSS needed."},
+                {num: 108, title: "Event Handling", definition: "Events are user actions like clicks.", why: "Used to make apps interactive.", syntax: 'widget.bind("<event>", function)', example: 'def key_press(event):\n    print(event.char)\nroot.bind("<Key>", key_press)', tip: "Use <Button-1> for mouse clicks."},
+                {num: 109, title: "Adding Images & Icons", definition: "Display images using PhotoImage or PIL.", why: "Used in logo displays.", syntax: 'from PIL import Image, ImageTk', example: 'from tkinter import *\nfrom PIL import Image, ImageTk\nroot = Tk()\nimg = Image.open("logo.png")\nphoto = ImageTk.PhotoImage(img)\nLabel(root, image=photo).pack()\nroot.mainloop()', tip: "Use .resize() for consistent sizes."},
+                {num: 110, title: "GUI Calculator Project", definition: "A calculator GUI project.", why: "Apply all GUI knowledge.", syntax: 'import tkinter as tk', example: 'import tkinter as tk\nroot = tk.Tk()\nentry = tk.Entry(root, width=16, font=("Arial", 20))\nentry.grid(row=0, column=0, columnspan=4)', tip: "Use eval() carefully for calculations."}
+            ],
+            "Stage 12": [
+                {num: 111, title: "Introduction to Databases", definition: "A database stores structured data in tables.", why: "Used in apps, websites, AI systems.", syntax: 'SQLite, MySQL, PostgreSQL, MongoDB', example: 'Think of database like Excel with multiple sheets', tip: "Use databases instead of text files."},
+                {num: 112, title: "SQLite Basics", definition: "Python's built-in database module.", why: "Used in desktop apps and local storage.", syntax: 'import sqlite3', example: 'import sqlite3\nconn = sqlite3.connect("users.db")\ncursor = conn.cursor()\ncursor.execute("CREATE TABLE users (name TEXT, age INT)")', tip: "Always commit() after changes."},
+                {num: 113, title: "CRUD Operations", definition: "Create, Read, Update, Delete - four main database actions.", why: "All apps use CRUD for managing data.", syntax: 'INSERT, SELECT, UPDATE, DELETE', example: 'cursor.execute("INSERT INTO users VALUES (?, ?)", ("vG", 22))\nconn.commit()', tip: "Use ? placeholders to avoid SQL injection."},
+                {num: 114, title: "MySQL Database Connection", definition: "MySQL is a popular open-source database.", why: "Used in web apps and e-commerce.", syntax: 'import mysql.connector', example: 'import mysql.connector\ndb = mysql.connector.connect(host="localhost", user="root", password="pass")', tip: "Always check connection errors."},
+                {num: 115, title: "Connecting GUI with Database", definition: "Link GUI apps with databases to store data.", why: "Used in login forms and registration apps.", syntax: 'import tkinter, sqlite3', example: 'import tkinter as tk\nimport sqlite3\ndef save_user():\n    cursor.execute("INSERT INTO users VALUES (?, ?)", (name.get(), email.get()))', tip: "Use .fetchall() to display stored data."},
+                {num: 116, title: "Firebase Realtime Database", definition: "Cloud-based NoSQL database.", why: "Used in mobile apps and IoT.", syntax: 'import firebase_admin', example: 'import firebase_admin\nfrom firebase_admin import db\nref = db.reference("users")', tip: "Requires Firebase Admin SDK."},
+                {num: 117, title: "RESTful APIs", definition: "API lets software communicate over internet.", why: "Used in mobile apps and web services.", syntax: 'import requests', example: 'import requests\nresponse = requests.get("https://api.coindesk.com/v1/bpi/currentprice.json")\nprint(response.json())', tip: "Always check status_code == 200."},
+                {num: 118, title: "Creating REST API (Flask)", definition: "Create your own API backend using Flask.", why: "Used to build backend services.", syntax: 'from flask import Flask, jsonify', example: 'from flask import Flask, jsonify\napp = Flask(__name__)\n@app.route("/users")\ndef get_users():\n    return jsonify([{"name": "vG"}])', tip: "Use Postman to test APIs."},
+                {num: 119, title: "JSON Data Handling", definition: "JSON is lightweight data format used in APIs.", why: "Used for data exchange between systems.", syntax: 'import json', example: 'import json\ndata = {"name": "vG"}\njson_str = json.dumps(data)\nprint(json_str)', tip: "json.dumps() = to string, json.load() = read file."},
+                {num: 120, title: "To-Do List App with Database", definition: "A task management app with GUI and database.", why: "Apply all database knowledge.", syntax: 'import tkinter, sqlite3', example: 'import tkinter as tk\nimport sqlite3\nconn = sqlite3.connect("todo.db")\ndef add_task():\n    cursor.execute("INSERT INTO tasks VALUES (?)", (entry.get(),))', tip: "Add delete/update buttons for full CRUD."}
+            ],
+            "Stage 13": [
+                {num: 121, title: "What Is Web Development", definition: "Building websites or web apps using Python frameworks.", why: "Used in blogs, dashboards, e-commerce.", syntax: 'Flask, Django, FastAPI', example: 'Flask = lightweight, Django = full-stack', tip: "Start with Flask for learning."},
+                {num: 122, title: "Flask — Lightweight Framework", definition: "Flask is a simple micro web framework.", why: "Used to build small websites and APIs.", syntax: 'from flask import Flask', example: 'from flask import Flask\napp = Flask(__name__)\n@app.route("/")\ndef home():\n    return "Hello vG!"\napp.run()', tip: "debug=True auto-restarts app on changes."},
+                {num: 123, title: "Flask Templates (HTML + Jinja2)", definition: "Flask uses Jinja2 to mix HTML with Python data.", why: "Used in dynamic web pages.", syntax: 'render_template("index.html")', example: 'from flask import render_template\n@app.route("/")\ndef home():\n    return render_template("index.html", name="vG")', tip: "Templates go in /templates folder only."},
+                {num: 124, title: "Flask with Forms and POST", definition: "Collect user input using HTML forms.", why: "Used in login forms and feedback pages.", syntax: 'request.form["fieldname"]', example: 'from flask import request\n@app.route("/", methods=["POST"])\ndef form():\n    name = request.form["name"]\n    return f"Hello, {name}!"', tip: "Always use method='POST' for forms."},
+                {num: 125, title: "Flask + Database (SQLite)", definition: "Flask can connect to databases.", why: "Used for storing form data and user info.", syntax: 'import sqlite3', example: 'import sqlite3\n@app.route("/add", methods=["POST"])\ndef add():\n    conn = sqlite3.connect("flask.db")\n    cursor.execute("INSERT INTO users VALUES (?)", (data,))', tip: "Always commit() and close()."},
+                {num: 126, title: "Flask REST API Example", definition: "A REST API allows communication between systems via HTTP.", why: "Used for mobile apps and automation tools.", syntax: 'from flask import jsonify', example: '@app.route("/users")\ndef get_users():\n    return jsonify([{"name": "vG", "age": 22}])', tip: "Test with Postman or requests module."},
+                {num: 127, title: "Django — Full Stack Framework", definition: "Django includes everything: database, routing, admin panel.", why: "Used in large websites and e-commerce.", syntax: 'django-admin startproject mysite', example: 'django-admin startproject mysite\npython manage.py runserver', tip: "Django auto-builds admin panel."},
+                {num: 128, title: "Django Models (Database ORM)", definition: "ORM lets you use Python classes to interact with databases.", why: "Used for user profiles and data tables.", syntax: 'from django.db import models', example: 'class Student(models.Model):\n    name = models.CharField(max_length=50)\n    marks = models.IntegerField()', tip: "Django auto-creates database tables."},
+                {num: 129, title: "Django Templates", definition: "Templates control HTML display in Django.", why: "Used to make dynamic pages.", syntax: 'render(request, "index.html")', example: 'def home(request):\n    return render(request, "index.html", {"name": "vG"})', tip: "Templates go in templates/ folder."},
+                {num: 130, title: "Deploy Flask/Django App", definition: "Publishing your app online so anyone can access it.", why: "To make your web app public.", syntax: 'render.com, Railway, PythonAnywhere', example: 'Push code to GitHub → Connect to Render → Deploy', tip: "Keep requirements.txt file ready."},
+                {num: 131, title: "Flask Notes App Project", definition: "A notes app with Flask backend.", why: "Apply all web development knowledge.", syntax: 'from flask import Flask, render_template', example: 'from flask import Flask, request, redirect\napp = Flask(__name__)\nnotes = []\n@app.route("/add", methods=["POST"])\ndef add():\n    notes.append(request.form["note"])', tip: "Store notes in SQLite for persistence."}
+            ],
+            "Stage 14": [
+                {num: 141, title: "What Is Data Science?", definition: "Analyzing, visualizing, and predicting insights from data using Python.", why: "Used in AI, business analytics, finance, healthcare.", syntax: 'NumPy, Pandas, Matplotlib, Scikit-learn', example: 'Python is the most popular language for data science', tip: "Practice using real datasets like CSV."},
+                {num: 142, title: "NumPy — Numerical Python", definition: "Fast mathematical calculations using arrays.", why: "Used in data preprocessing and ML models.", syntax: 'import numpy as np', example: 'import numpy as np\narr = np.array([10, 20, 30, 40])\nprint(arr.mean())', tip: "Use NumPy arrays instead of lists."},
+                {num: 143, title: "NumPy Array Operations", definition: "Arrays can be 1D, 2D, or 3D with vectorized math.", why: "Used for matrix operations.", syntax: 'np.array(), .shape, .sum()', example: 'a = np.array([[1,2],[3,4]])\nprint(a.shape)\nprint(a.sum(axis=0))', tip: "axis=0 → columns, axis=1 → rows."},
+                {num: 144, title: "Pandas — Data Handling", definition: "Handle tabular data (rows & columns) easily.", why: "Used in data cleaning and CSV analysis.", syntax: 'import pandas as pd', example: 'import pandas as pd\ndf = pd.DataFrame({"Name":["vG"], "Score":[85]})\nprint(df)', tip: "Pandas = Excel + Python superpowers."},
+                {num: 145, title: "Data Cleaning with Pandas", definition: "Fixing missing, wrong, or duplicate data.", why: "Always clean before analyzing.", syntax: '.fillna(), .dropna(), .drop_duplicates()', example: 'df.fillna("Unknown")\ndf.dropna()', tip: "Use .isnull() to find missing data."},
+                {num: 146, title: "Data Visualization — Matplotlib", definition: "Plot graphs and charts in Python.", why: "Used in data presentation.", syntax: 'import matplotlib.pyplot as plt', example: 'import matplotlib.pyplot as plt\nplt.plot([1,2,3], [4,5,6])\nplt.show()', tip: "Add plt.grid() for clarity."},
+                {num: 147, title: "Seaborn — Advanced Visualization", definition: "Beautiful statistical charts with few lines.", why: "Used for advanced graphs.", syntax: 'import seaborn as sns', example: 'import seaborn as sns\nimport pandas as pd\ndf = pd.DataFrame({"A":[1,2,3], "B":[4,3,2]})\nsns.barplot(x="A", y="B", data=df)', tip: "Works perfectly with Pandas DataFrames."},
+                {num: 148, title: "Scikit-learn (sklearn)", definition: "Train, test, and predict using ML algorithms.", why: "Used in AI systems and predictions.", syntax: 'from sklearn.model_selection import train_test_split', example: 'from sklearn.linear_model import LinearRegression\nmodel = LinearRegression()\nmodel.fit(X, y)', tip: "Always split data before training."},
+                {num: 149, title: "Types of Machine Learning", definition: "Supervised = with labels, Unsupervised = find patterns, Reinforcement = learn from actions.", why: "Different types for different problems.", syntax: 'Classification, Regression, Clustering', example: 'Supervised = Predict prices\nUnsupervised = Customer grouping', tip: "Supervised needs labeled training data."},
+                {num: 150, title: "Linear Regression Example", definition: "Linear Regression predicts numeric values.", why: "Used for continuous data predictions.", syntax: 'from sklearn.linear_model import LinearRegression', example: 'from sklearn.linear_model import LinearRegression\nX = [[1],[2],[3],[4]]\ny = [10,20,30,40]\nmodel = LinearRegression()\nmodel.fit(X, y)', tip: "Use for continuous data like age, salary."},
+                {num: 151, title: "Classification — Predicting Categories", definition: "Predict a class/category like Yes/No or Spam/Not Spam.", why: "Used for binary decisions.", syntax: 'from sklearn.tree import DecisionTreeClassifier', example: 'from sklearn.tree import DecisionTreeClassifier\nX = [[1,1],[1,0],[0,1],[0,0]]\ny = [1,1,0,0]\nmodel = DecisionTreeClassifier()\nmodel.fit(X, y)', tip: "Try RandomForestClassifier for better accuracy."},
+                {num: 152, title: "Clustering — Unsupervised Learning", definition: "Clustering groups similar data without labels.", why: "Used in customer segmentation.", syntax: 'from sklearn.cluster import KMeans', example: 'from sklearn.cluster import KMeans\ndata = [[1,2],[2,3],[10,12],[11,13]]\nkmeans = KMeans(n_clusters=2)\nkmeans.fit(data)', tip: "n_clusters controls number of groups."},
+                {num: 153, title: "Real Project — Predict Student Marks", definition: "A simple ML project to predict marks based on study hours.", why: "Apply all ML knowledge.", syntax: 'import pandas, sklearn', example: 'import pandas as pd\nfrom sklearn.linear_model import LinearRegression\ndf = pd.DataFrame({"Hours":[1,2,3,4,5], "Marks":[20,40,60,80,100]})\nX = df[["Hours"]]\ny = df["Marks"]\nmodel = LinearRegression()\nmodel.fit(X, y)\nprint(model.predict([[6]]))', tip: "Use .score() to check accuracy."},
+                {num: 154, title: "Exporting & Saving Models", definition: "Save trained models for later use.", why: "Helps reuse model without retraining.", syntax: 'import joblib', example: 'import joblib\njoblib.dump(model, "model.pkl")\nloaded = joblib.load("model.pkl")', tip: "Use .pkl for model storage."}
+            ],
+            "Stage 15": [
+                {num: 155, title: "What Is Deep Learning?", definition: "Deep Learning uses Neural Networks to learn complex patterns.", why: "Used in AI, speech recognition, image detection.", syntax: 'TensorFlow, Keras, PyTorch', example: 'Deep Learning = Machine Learning + Neural Networks + Big Data', tip: "Needs large data and GPU support."},
+                {num: 156, title: "TensorFlow — Core Deep Learning", definition: "TensorFlow is Google's framework for deep learning.", why: "Used for AI research and model training.", syntax: 'import tensorflow as tf', example: 'import tensorflow as tf\na = tf.constant(5)\nb = tf.constant(3)\nprint(tf.add(a, b))', tip: "Tensor means data container."},
+                {num: 157, title: "Keras — Easy Deep Learning API", definition: "Keras is high-level API built on TensorFlow.", why: "Used for fast prototyping and neural networks.", syntax: 'from tensorflow import keras', example: 'from tensorflow import keras\nfrom tensorflow.keras import layers\nmodel = keras.Sequential([layers.Dense(10, activation="relu")])', tip: "Sequential = stack layers in order."},
+                {num: 158, title: "Structure of Neural Network", definition: "Input Layer → Hidden Layers → Output Layer.", why: "Learns patterns through multiple layers.", syntax: 'Dense(units, activation)', example: 'from tensorflow.keras.models import Sequential\nfrom tensorflow.keras.layers import Dense\nmodel = Sequential([Dense(8, activation="relu")])', tip: "Use .summary() to see structure."},
+                {num: 159, title: "Training a Neural Network", definition: "Training means feeding data and adjusting weights.", why: "Model learns to make accurate predictions.", syntax: 'model.compile(), model.fit()', example: 'model.compile(optimizer="adam", loss="mse")\nmodel.fit(X, y, epochs=200)', tip: "optimizer='adam' is best for most cases."},
+                {num: 160, title: "Activation Functions", definition: "relu, sigmoid, tanh, softmax - control neuron output.", why: "Used for non-linearity in networks.", syntax: 'activation="relu"', example: 'Dense(32, activation="relu")\nDense(1, activation="sigmoid")', tip: "Use relu in hidden, sigmoid/softmax in output."},
+                {num: 161, title: "Loss & Optimizers", definition: "Loss measures error; Optimizer reduces it.", why: "Helps model learn better weights.", syntax: 'Adam, SGD, RMSprop', example: 'model.compile(optimizer="adam", loss="mse")', tip: "For classification use binary_crossentropy."},
+                {num: 162, title: "Image Recognition with CNN", definition: "CNNs are deep learning models for image data.", why: "Used in face detection, object recognition.", syntax: 'Conv2D, MaxPooling2D, Flatten', example: 'from tensorflow.keras.layers import Conv2D, MaxPooling2D\nmodel = Sequential([Conv2D(32, (3,3), activation="relu")])', tip: "CNN learns edges → shapes → objects."},
+                {num: 163, title: "Recurrent Neural Networks (RNN)", definition: "RNNs are used for sequential or time-based data.", why: "Used in chatbots and stock predictions.", syntax: 'SimpleRNN, LSTM, GRU', example: 'from tensorflow.keras.layers import SimpleRNN\nmodel = Sequential([SimpleRNN(50)])', tip: "RNN remembers previous inputs."},
+                {num: 164, title: "LSTM — Long Short-Term Memory", definition: "LSTM is advanced RNN that remembers long-term dependencies.", why: "Used in text generation and translation.", syntax: 'from tensorflow.keras.layers import LSTM', example: 'from tensorflow.keras.layers import LSTM\nmodel = Sequential([LSTM(64)])', tip: "LSTM is go-to for time series and NLP."},
+                {num: 165, title: "Natural Language Processing (NLP)", definition: "NLP helps computers understand human language.", why: "Used in chatbots, translation, sentiment analysis.", syntax: 'from sklearn.feature_extraction.text import CountVectorizer', example: 'from sklearn.feature_extraction.text import CountVectorizer\ncv = CountVectorizer()\ndata = cv.fit_transform(["I love Python"])', tip: "Use NLTK or spaCy for advanced NLP."}
+            ],
+            // Add this new stage to the pythonData object
+"Stage 16: Professional Python": [
+    {num: 166, title: "Core Advanced Foundations", definition: "Advanced Python concepts and development best practices.", why: "Essential for professional development.", syntax: 'python -m venv venv\nvenv\\Scripts\\activate\npip install flask', example: '# Creating virtual environment\npython -m venv myenv\n\n# Package setup\n# mypkg/__init__.py\ndef greet(name): return f"Hi {name}"', tip: "Always use virtual environments for projects."},
+    
+    {num: 167, title: "Advanced OOP Design", definition: "Complex object-oriented patterns and principles.", why: "Used in large-scale applications.", syntax: 'class Vehicle:\n    def move(self): print("Moving...")\nclass Car(Vehicle):\n    def move(self): print("Car driving...")', example: 'from abc import ABC, abstractmethod\nclass Shape(ABC):\n    @abstractmethod\n    def area(self): pass', tip: "Use abstract classes for plugin systems."},
+    
+    {num: 168, title: "Advanced Data Processing", definition: "Complex data operations using NumPy and Pandas.", why: "Essential for data science and analytics.", syntax: 'import numpy as np\nimport pandas as pd', example: 'a = np.array([[1,2],[3,4]])\nprint(a.T)\nprint(np.linalg.inv(a))', tip: "Vectorization is faster than loops."},
+    
+    {num: 169, title: "Professional Machine Learning", definition: "Complete ML workflow and model deployment.", why: "Used in AI applications and data science.", syntax: 'from sklearn.model_selection import train_test_split\nfrom sklearn.tree import DecisionTreeClassifier', example: 'model = DecisionTreeClassifier()\nmodel.fit(X_train, y_train)\njoblib.dump(model, "model.pkl")', tip: "Use GridSearchCV for hyperparameter tuning."},
+    
+    {num: 170, title: "Deep Learning & Neural Networks", definition: "Building and training neural networks.", why: "Used in AI and pattern recognition.", syntax: 'from tensorflow.keras.models import Sequential\nfrom tensorflow.keras.layers import Dense', example: 'model = Sequential([\n    Dense(64, activation="relu"),\n    Dense(1, activation="sigmoid")\n])', tip: "Use CNN for images, RNN for sequences."},
+    
+    {num: 171, title: "NLP & Computer Vision", definition: "Text and image processing with AI.", why: "Used in chatbots and image recognition.", syntax: 'from transformers import pipeline\nimport cv2', example: 'summarizer = pipeline("summarization")\nfaces = face_cascade.detectMultiScale(gray)', tip: "Use pre-trained models when possible."},
+    
+    {num: 172, title: "Automation & Web Scraping", definition: "Automated tasks and data collection.", why: "Used in process automation and data gathering.", syntax: 'from selenium import webdriver\nfrom bs4 import BeautifulSoup', example: 'driver = webdriver.Chrome()\ndriver.get("https://google.com")', tip: "Always respect website robots.txt."},
+    
+    {num: 173, title: "Professional Web Development", definition: "Building web applications and APIs.", why: "Used in web services and backends.", syntax: 'from flask import Flask\nfrom fastapi import FastAPI', example: 'app = Flask(__name__)\n@app.route("/")\ndef home(): return "Hello"', tip: "Use FastAPI for modern APIs."},
+    
+    {num: 174, title: "Database & ORM", definition: "Advanced database operations and ORMs.", why: "Used in data-driven applications.", syntax: 'from sqlalchemy import create_engine\nfrom pymongo import MongoClient', example: 'engine = create_engine("sqlite:///db.sqlite")\nBase.metadata.create_all(engine)', tip: "Use ORMs for database abstraction."},
+    
+    {num: 175, title: "Security & Testing", definition: "Securing and testing Python applications.", why: "Essential for production applications.", syntax: 'import unittest\nimport hashlib', example: 'class TestApp(unittest.TestCase):\n    def test_feature(self):\n        self.assertEqual(1+1, 2)', tip: "Always write tests before deployment."},
+    
+    {num: 176, title: "Deployment & DevOps", definition: "Deploying and maintaining Python applications.", why: "Used in application lifecycle management.", syntax: 'git commands\ndocker commands', example: 'git add .\ngit commit -m "init"\ngit push origin main', tip: "Use CI/CD for automated deployment."},
+    
+    {num: 177, title: "AI Project Implementation", definition: "Building complete AI applications.", why: "Combines all advanced concepts.", syntax: 'Various frameworks and libraries', example: '# Smart Assistant Example\nclass Assistant:\n    def __init__(self):\n        self.nlp = pipeline("text2text-generation")', tip: "Start small and add features gradually."},
+    
+    {num: 178, title: "Professional Career Growth", definition: "Building professional portfolio and skills.", why: "Essential for career advancement.", syntax: 'Portfolio development\nCloud certifications', example: '1. Create GitHub portfolio\n2. Deploy live demos\n3. Get certifications', tip: "Contribute to open source projects."}
+]
+        };
+
+        let currentStageIndex = 0;
+        const stageKeys = Object.keys(pythonData);
+        let allTopics = [];
+        
+        Object.keys(pythonData).forEach(stage => {
+            pythonData[stage].forEach(topic => {
+                allTopics.push({...topic, stage});
+            });
+        });
+
+        function renderNavTabs() {
+            const navTabs = document.getElementById('navTabs');
+            navTabs.innerHTML = stageKeys.map((stage, idx) => 
+                `<button class="tab-btn ${idx === 1 ? 'active' : ''}" onclick="switchTab('${stage}', ${idx})">${stage}</button>`
+            ).join('');
+        }
+
+        function switchTab(stage, index) {
+            currentStageIndex = index;
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-btn')[index].classList.add('active');
+            renderContent(pythonData[stage]);
+            updateNavButtons();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function navigateStage(direction) {
+            currentStageIndex += direction;
+            if (currentStageIndex >= 0 && currentStageIndex < stageKeys.length) {
+                const stage = stageKeys[currentStageIndex];
+                switchTab(stage, currentStageIndex);
+            }
+        }
+
+        function updateNavButtons() {
+            document.getElementById('prevBtn').disabled = currentStageIndex === 0;
+            document.getElementById('nextBtn').disabled = currentStageIndex === stageKeys.length - 1;
+        }
+
+        function renderContent(topics) {
+            const contentArea = document.getElementById('contentArea');
+            contentArea.innerHTML = `
+                <div class="topic-grid">
+                    ${topics.map(topic => `
+                        <div class="topic-card">
+                            <div class="topic-header">
+                                <div class="topic-number">${topic.num}</div>
+                                <div class="topic-title">${topic.title}</div>
+                            </div>
+                            <div class="topic-section">
+                                <div class="section-label">🧩 Definition</div>
+                                <div class="section-content">${topic.definition}</div>
+                            </div>
+                            <div class="topic-section">
+                                <div class="section-label">💡 Why & Where Used</div>
+                                <div class="section-content">${topic.why}</div>
+                            </div>
+                            <div class="topic-section">
+                                <div class="section-label">⚙️ Syntax</div>
+                                <div class="code-block"><code>${escapeHtml(topic.syntax)}</code></div>
+                            </div>
+                            <div class="topic-section">
+                                <div class="section-label">🧠 Example</div>
+                                <div class="code-block"><code>${escapeHtml(topic.example)}</code></div>
+                            </div>
+                            <div class="tip-box">
+                                <strong>Tip:</strong> ${topic.tip}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            if (!query) {
+                renderContent(pythonData[stageKeys[currentStageIndex]]);
+                return;
+            }
+
+            const filtered = allTopics.filter(topic => 
+                topic.title.toLowerCase().includes(query) ||
+                topic.definition.toLowerCase().includes(query) ||
+                topic.syntax.toLowerCase().includes(query) ||
+                topic.example.toLowerCase().includes(query)
+            );
+            renderContent(filtered);
+        });
+
+        // Scroll to top
+        const scrollTop = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            scrollTop.classList.toggle('visible', window.scrollY > 300);
+        });
+        scrollTop.addEventListener('click', () => {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+
+        // Initialize
+        renderNavTabs();
+        renderContent(pythonData["Stage 1"]);
+        updateNavButtons();
+
+        // PWA Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('data:text/javascript;base64,c2VsZi5hZGRFdmVudExpc3RlbmVyKCJpbnN0YWxsIiwgZSA9PiB7CiAgZS53YWl0VW50aWwoc2VsZi5za2lwV2FpdGluZygpKTsKfSk7Cg==');
+            });
+        }
+    </script>
+</body>
+</html>
