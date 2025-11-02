@@ -385,7 +385,7 @@
         /* Scroll to Top Button */
         .scroll-top {
             position: fixed;
-            bottom: 90px;
+            bottom: 180px;
             right: 20px;
             width: 45px;
             height: 45px;
@@ -1146,6 +1146,318 @@
                 transform: rotate(360deg);
             }
         }
+
+
+
+        /* AI Chat Assistant */
+.chat-fab {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-pink));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 5px 25px rgba(99, 102, 241, 0.4);
+    z-index: 1500;
+    transition: all 0.3s;
+    animation: bounce 2s infinite;
+}
+
+.chat-fab:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.6);
+}
+
+.chat-fab-icon {
+    font-size: 1.8rem;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.chat-window {
+    position: fixed;
+    bottom: 160px;
+    right: 20px;
+    width: 380px;
+    height: 550px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    z-index: 1500;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-window.active {
+    display: flex;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chat-header {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    color: white;
+}
+
+.chat-status {
+    width: 8px;
+    height: 8px;
+    background: var(--success);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.chat-close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.chat-close-btn:hover {
+    transform: rotate(90deg);
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 10px;
+}
+
+.chat-message {
+    display: flex;
+    gap: 10px;
+    animation: fadeIn 0.3s;
+}
+
+.chat-message.user {
+    flex-direction: row-reverse;
+}
+
+.chat-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.chat-avatar.ai {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+}
+
+.chat-avatar.user {
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-blue));
+}
+
+.chat-bubble {
+    background: var(--bg-primary);
+    padding: 12px 15px;
+    border-radius: 15px;
+    max-width: 75%;
+    word-wrap: break-word;
+    border: 1px solid var(--border);
+}
+
+.chat-message.user .chat-bubble {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: white;
+    border: none;
+}
+
+.chat-bubble code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Consolas', monospace;
+    font-size: 0.9em;
+}
+
+.chat-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.suggestion-btn {
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: var(--text-secondary);
+}
+
+.suggestion-btn:hover {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+}
+
+.chat-input-area {
+    padding: 15px;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+}
+
+.chat-input {
+    flex: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 25px;
+    padding: 10px 15px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.chat-input:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.chat-send-btn {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+}
+
+.chat-send-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+}
+
+.chat-send-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.typing-indicator {
+    display: flex;
+    gap: 4px;
+    padding: 10px;
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+    animation: typing 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-10px); }
+}
+
+@media (max-width: 768px) {
+    .chat-window {
+        width: calc(100% - 40px);
+        height: 500px;
+        right: 20px;
+        bottom: 160px;
+    }
+    
+    .chat-fab {
+        width: 55px;
+        height: 55px;
+        bottom: 90px;
+    }
+}
+
+@media (max-width: 480px) {
+    .chat-window {
+        width: calc(100% - 20px);
+        right: 10px;
+        left: 10px;
+        height: 450px;
+    }
+    
+    .chat-bubble {
+        max-width: 80%;
+    }
+}
     </style>
 </head>
 
@@ -1421,6 +1733,48 @@
     <!-- Toast Notification -->
     <div class="toast" id="toast"></div>
 
+
+
+    <!-- AI Chat Assistant -->
+<div class="chat-fab" id="chatFab" onclick="toggleChat()">
+    <span class="chat-fab-icon">🤖</span>
+</div>
+
+<div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+        <div class="chat-header-title">
+            <span>🤖</span>
+            <div>
+                <div>PyPath AI Assistant</div>
+                <div style="font-size: 0.75rem; opacity: 0.9; display: flex; align-items: center; gap: 5px;">
+                    <span class="chat-status"></span> Online
+                </div>
+            </div>
+        </div>
+        <button class="chat-close-btn" onclick="toggleChat()">×</button>
+    </div>
+    
+    <div class="chat-messages" id="chatMessages">
+        <div class="chat-message">
+            <div class="chat-avatar ai">🤖</div>
+            <div>
+                <div class="chat-bubble">
+                    👋 Hi! I'm your Python learning assistant. Ask me anything about Python programming!
+                </div>
+                <div class="chat-suggestions">
+                    <button class="suggestion-btn" onclick="sendSuggestion('What are Python lists?')">What are lists?</button>
+                    <button class="suggestion-btn" onclick="sendSuggestion('How to use functions?')">How to use functions?</button>
+                    <button class="suggestion-btn" onclick="sendSuggestion('Explain OOP')">Explain OOP</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="chat-input-area">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Ask me anything..." onkeypress="handleChatKeyPress(event)">
+        <button class="chat-send-btn" id="chatSendBtn" onclick="sendMessage()">➤</button>
+    </div>
+</div>
 
 
     <script>
@@ -2117,6 +2471,296 @@
             stats.lastVisit = new Date().toISOString();
             saveStats();
         });
+
+
+
+
+        // ========== AI CHAT ASSISTANT ==========
+const aiKnowledge = {
+    // ========== GREETINGS & BASIC INTERACTIONS ==========
+    "hello|hi|hey|greetings": "👋 Hello! I'm your Python AI assistant. I can help you with anything from basics to advanced topics like AI and web development. What would you like to learn?",
+    "how are you|how do you do": "🤖 I'm doing great! Ready to help you master Python. What topic interests you today?",
+    "thank|thanks|appreciate": "😊 You're welcome! Happy to help. Keep learning and coding! 🐍",
+    "bye|goodbye|see you": "👋 Goodbye! Keep practicing Python. See you next time! 🚀",
+    
+    // ========== GETTING STARTED ==========
+    "what is python|python definition|about python": "🐍 Python is a high-level, interpreted programming language created by Guido van Rossum in 1991. It's known for:\n\n✅ Simple, readable syntax\n✅ Versatile (web, AI, automation)\n✅ Huge community & libraries\n✅ Beginner-friendly\n\nUsed by: Google, Netflix, NASA, Instagram!",
+    "why learn python|why python": "🎯 Why Learn Python?\n\n1. Easy to learn (readable syntax)\n2. High demand (jobs everywhere)\n3. Versatile (web, AI, data, automation)\n4. Great libraries (thousands available)\n5. Strong community support\n6. High salary potential\n\nPerfect for beginners AND experts!",
+    "install python|setup python|download python": "💻 How to Install Python:\n\n1. Go to python.org\n2. Download latest version (3.12+)\n3. Run installer\n4. ✅ Check 'Add to PATH'\n5. Verify: python --version\n\nTip: Use IDEs like VS Code, PyCharm!",
+    "first program|hello world": "🎉 Your First Python Program:\n\nprint('Hello, World!')\n\nRun it:\npython filename.py\n\nTip: Start simple, build confidence!",
+    "python ide|editor|tools": "🛠️ Best Python IDEs:\n\n• VS Code (most popular)\n• PyCharm (professional)\n• Jupyter Notebook (data science)\n• Sublime Text (lightweight)\n• IDLE (built-in)\n\nTip: VS Code is great for beginners!",
+    
+    // ========== VARIABLES & DATA TYPES ==========
+    "variable|variables|var": "📦 Variables store data:\n\nname = 'vG'\nage = 20\nheight = 5.8\nis_student = True\n\nRules:\n• Start with letter/underscore\n• Case-sensitive\n• No spaces\n\nTip: Use descriptive names!",
+    "data type|types|dtype": "🔤 Python Data Types:\n\n• int (10, -5, 0)\n• float (3.14, -2.5)\n• str ('text', \"hello\")\n• bool (True, False)\n• list [1, 2, 3]\n• tuple (1, 2, 3)\n• dict {'key': 'value'}\n• set {1, 2, 3}\n\nCheck type: type(variable)",
+    "string|str|text": "📝 Strings (text data):\n\nname = 'Python'\nquote = \"Learning is fun\"\nmulti = '''Multiple\nlines'''\n\nOperations:\n• Concatenate: 'Hello' + ' World'\n• Repeat: 'Ha' * 3\n• Length: len(name)\n• Index: name[0]\n• Slice: name[0:3]\n\nTip: Strings are immutable!",
+    "integer|int|number": "🔢 Integers (whole numbers):\n\nage = 20\ncount = -5\nbig = 1000000\n\nOperations:\n• Add: 5 + 3\n• Subtract: 10 - 4\n• Multiply: 7 * 2\n• Divide: 20 / 4\n• Power: 2 ** 3\n• Modulo: 10 % 3\n\nTip: No size limit in Python!",
+    "float|decimal|floating": "💧 Floats (decimal numbers):\n\nprice = 19.99\npi = 3.14159\ntemp = -40.5\n\nOperations:\n• Same as integers\n• Division always returns float\n• Use round() for precision\n\nTip: Be careful with precision!",
+    "boolean|bool|true false": "✅ Booleans (True/False):\n\nis_active = True\nhas_permission = False\n\nUsed in:\n• Conditions: if is_active:\n• Comparisons: 5 > 3 → True\n• Logic: True and False → False\n\nTip: 0, '', [], None are False!",
+    "type conversion|casting|convert": "🔄 Type Conversion:\n\n# String to int\nage = int('20')\n\n# Int to string\ntext = str(100)\n\n# String to float\nprice = float('19.99')\n\n# To boolean\nflag = bool(1)  # True\n\nTip: Handle invalid conversions!",
+    
+    // ========== OPERATORS ==========
+    "operator|operators|operations": "⚙️ Python Operators:\n\nArithmetic: + - * / // % **\nComparison: == != > < >= <=\nLogical: and or not\nAssignment: = += -= *= /=\nMembership: in, not in\nIdentity: is, is not\n\nExample:\nx = 10\ny = 5\nresult = x > y and x != 0",
+    "arithmetic|math operations|calculate": "➕ Arithmetic Operators:\n\na = 10\nb = 3\n\nprint(a + b)  # 13 Addition\nprint(a - b)  # 7 Subtraction\nprint(a * b)  # 30 Multiply\nprint(a / b)  # 3.33 Division\nprint(a // b) # 3 Floor div\nprint(a % b)  # 1 Modulo\nprint(a ** b) # 1000 Power\n\nTip: Use // for integer division!",
+    "comparison|compare|relational": "⚖️ Comparison Operators:\n\nx = 5\ny = 10\n\nprint(x == y)  # False Equal\nprint(x != y)  # True Not equal\nprint(x > y)   # False Greater\nprint(x < y)   # True Less\nprint(x >= y)  # False Greater/Equal\nprint(x <= y)  # True Less/Equal\n\nTip: Returns True or False!",
+    "logical|and or not|logic": "🧠 Logical Operators:\n\nx = True\ny = False\n\nprint(x and y)  # False Both true?\nprint(x or y)   # True Any true?\nprint(not x)    # False Opposite\n\nUseful in conditions:\nif age > 18 and has_id:\n    print('Allowed')\n\nTip: Use for complex conditions!",
+    
+    // ========== INPUT & OUTPUT ==========
+    "input|user input|get input": "⌨️ Getting User Input:\n\nname = input('Enter name: ')\nage = int(input('Enter age: '))\n\nNote:\n• input() always returns string\n• Convert to int/float if needed\n\nExample:\nnum = int(input('Number: '))\nprint(f'Double: {num * 2}')\n\nTip: Always validate input!",
+    "output|print|display": "🖨️ Output with print():\n\nprint('Hello')\nprint('Value:', 100)\nprint(f'Name: {name}')\nprint('Line 1', 'Line 2', sep=' | ')\nprint('No newline', end='')\n\nFormatting:\n• f-strings: f'{var}'\n• .format(): '{}'.format(val)\n• % operator: '%s' % val\n\nTip: Use f-strings (fastest)!",
+    "format|formatting|f-string": "🎨 String Formatting:\n\nname = 'vG'\nage = 20\n\n# f-strings (best)\nprint(f'I am {name}, {age} years old')\n\n# .format()\nprint('Hello {}'.format(name))\n\n# % operator\nprint('Age: %d' % age)\n\nTip: f-strings are Python 3.6+!",
+    
+    // ========== CONTROL FLOW ==========
+    "if|condition|conditional|decision": "🔀 If Statements:\n\nage = 18\n\nif age >= 18:\n    print('Adult')\nelif age >= 13:\n    print('Teen')\nelse:\n    print('Child')\n\nShort form:\nstatus = 'Adult' if age >= 18 else 'Minor'\n\nTip: Indentation is crucial!",
+    "loop|loops|iteration": "🔁 Loops in Python:\n\n# For loop (known count)\nfor i in range(5):\n    print(i)\n\n# While loop (condition-based)\ncount = 0\nwhile count < 5:\n    print(count)\n    count += 1\n\nControls:\n• break: exit loop\n• continue: skip iteration\n\nTip: Use for when count is known!",
+    "for loop|for|iterate": "🔄 For Loops:\n\n# Range\nfor i in range(5):\n    print(i)  # 0,1,2,3,4\n\n# List\nfruits = ['apple', 'banana']\nfor fruit in fruits:\n    print(fruit)\n\n# Dictionary\nfor key, value in dict.items():\n    print(key, value)\n\nTip: Use enumerate() for index!",
+    "while loop|while": "⏳ While Loops:\n\ncount = 0\nwhile count < 5:\n    print(count)\n    count += 1\n\n# Infinite loop (careful!)\nwhile True:\n    data = input('Enter: ')\n    if data == 'quit':\n        break\n\nTip: Always ensure exit condition!",
+    "break|continue|pass": "🛑 Loop Controls:\n\n# break - exit loop\nfor i in range(10):\n    if i == 5:\n        break\n    print(i)  # 0,1,2,3,4\n\n# continue - skip iteration\nfor i in range(5):\n    if i == 2:\n        continue\n    print(i)  # 0,1,3,4\n\n# pass - do nothing\nif True:\n    pass  # placeholder\n\nTip: Use break to exit early!",
+    "range|range function": "📊 Range Function:\n\n# range(stop)\nfor i in range(5):\n    print(i)  # 0,1,2,3,4\n\n# range(start, stop)\nfor i in range(2, 6):\n    print(i)  # 2,3,4,5\n\n# range(start, stop, step)\nfor i in range(0, 10, 2):\n    print(i)  # 0,2,4,6,8\n\nTip: Stop value is exclusive!",
+    "nested loop|loop in loop": "🔲 Nested Loops:\n\nfor i in range(3):\n    for j in range(3):\n        print(f'({i},{j})', end=' ')\n    print()\n\nOutput:\n(0,0) (0,1) (0,2)\n(1,0) (1,1) (1,2)\n(2,0) (2,1) (2,2)\n\nTip: Useful for 2D data!",
+    
+    // ========== DATA STRUCTURES ==========
+    "list|lists|array": "📋 Lists (ordered, mutable):\n\nfruits = ['apple', 'banana', 'cherry']\n\nAccess:\n• fruits[0] → 'apple'\n• fruits[-1] → last item\n• fruits[1:3] → slice\n\nMethods:\n• append() - add end\n• insert() - add at index\n• remove() - delete value\n• pop() - delete by index\n• sort() - arrange\n\nTip: Most versatile data type!",
+    "list methods|list operations": "🛠️ List Methods:\n\nnums = [3, 1, 4, 1, 5]\n\nnums.append(9)      # Add end\nnums.insert(0, 2)   # Add at index\nnums.remove(1)      # Remove first 1\nnums.pop()          # Remove last\nnums.sort()         # Sort ascending\nnums.reverse()      # Reverse order\nnums.count(1)       # Count 1s\nnums.index(4)       # Find index\n\nTip: sort() modifies, sorted() returns new!",
+    "list comprehension|listcomp": "⚡ List Comprehension:\n\n# Basic\nsquares = [x**2 for x in range(5)]\n# [0, 1, 4, 9, 16]\n\n# With condition\nevens = [x for x in range(10) if x % 2 == 0]\n# [0, 2, 4, 6, 8]\n\n# Nested\nmatrix = [[i*j for j in range(3)] for i in range(3)]\n\nTip: Faster than loops!",
+    "tuple|tuples|immutable": "💎 Tuples (ordered, immutable):\n\npoint = (10, 20)\ncolors = ('red', 'green', 'blue')\n\nAccess:\n• point[0] → 10\n• point[-1] → last\n\nWhy use?\n• Faster than lists\n• Protect data\n• Dictionary keys\n• Return multiple values\n\nTip: Can't change after creation!",
+    "set|sets|unique": "🎯 Sets (unordered, unique):\n\nnums = {1, 2, 2, 3, 3, 3}\nprint(nums)  # {1, 2, 3}\n\nOperations:\n• add() - add item\n• remove() - delete item\n• union() - combine\n• intersection() - common\n• difference() - unique to first\n\nTip: No duplicates, no indexing!",
+    "dictionary|dict|hash map": "🔑 Dictionaries (key-value pairs):\n\nstudent = {\n    'name': 'vG',\n    'age': 20,\n    'grade': 'A'\n}\n\nAccess:\n• student['name']\n• student.get('age')\n\nMethods:\n• keys() - all keys\n• values() - all values\n• items() - key-value pairs\n• update() - add/modify\n• pop() - remove\n\nTip: Keys must be unique!",
+    "dictionary methods|dict operations": "🗂️ Dictionary Methods:\n\ndata = {'a': 1, 'b': 2}\n\ndata['c'] = 3       # Add\ndata.update({'d': 4}) # Batch add\ndata.pop('a')       # Remove & return\ndata.get('b', 0)    # Safe access\ndata.keys()         # All keys\ndata.values()       # All values\ndata.items()        # Pairs\ndata.clear()        # Empty\n\nTip: Use .get() to avoid KeyError!",
+    
+    // ========== FUNCTIONS ==========
+    "function|functions|def": "⚙️ Functions (reusable code):\n\ndef greet(name):\n    return f'Hello {name}!'\n\nresult = greet('vG')\nprint(result)\n\nBenefits:\n• Reusability\n• Organization\n• Modularity\n• Testing\n\nParts:\n• def - keyword\n• name - function name\n• parameters - inputs\n• return - output\n\nTip: One function, one task!",
+    "parameters|arguments|args": "📥 Function Parameters:\n\n# Positional\ndef add(a, b):\n    return a + b\n\n# Default values\ndef greet(name='Guest'):\n    return f'Hello {name}'\n\n# Keyword arguments\nadd(b=5, a=3)\n\n# Variable arguments\ndef sum_all(*args):\n    return sum(args)\n\nTip: *args = tuple, **kwargs = dict!",
+    "return|return value": "↩️ Return Statement:\n\ndef square(x):\n    return x ** 2\n\nresult = square(5)  # 25\n\n# Multiple returns\ndef stats(nums):\n    return min(nums), max(nums), sum(nums)\n\nmi, ma, total = stats([1,2,3,4,5])\n\n# Early return\ndef check(x):\n    if x < 0:\n        return 'Negative'\n    return 'Positive'\n\nTip: Function ends at return!",
+    "scope|variable scope|global local": "🌍 Variable Scope:\n\nx = 10  # Global\n\ndef func():\n    y = 5  # Local\n    print(x)  # Can access global\n    print(y)\n\nfunc()\nprint(x)  # OK\nprint(y)  # Error!\n\n# Modify global\ndef change():\n    global x\n    x = 20\n\nTip: Avoid too many globals!",
+    "lambda|anonymous function": "⚡ Lambda Functions (one-liners):\n\n# Regular function\ndef square(x):\n    return x ** 2\n\n# Lambda equivalent\nsquare = lambda x: x ** 2\n\n# With map\nnums = [1, 2, 3, 4]\nsquares = list(map(lambda x: x**2, nums))\n\n# With filter\nevens = list(filter(lambda x: x%2==0, nums))\n\nTip: Use for simple operations!",
+    "recursion|recursive": "🔄 Recursion (function calls itself):\n\ndef factorial(n):\n    if n == 0:\n        return 1\n    return n * factorial(n-1)\n\nprint(factorial(5))  # 120\n\n# Fibonacci\ndef fib(n):\n    if n <= 1:\n        return n\n    return fib(n-1) + fib(n-2)\n\nTip: Always have base case!",
+    "decorator|decorators": "🎨 Decorators (modify functions):\n\ndef timer(func):\n    def wrapper(*args):\n        print('Starting...')\n        result = func(*args)\n        print('Done!')\n        return result\n    return wrapper\n\n@timer\ndef greet(name):\n    return f'Hello {name}'\n\ngreet('vG')\n# Output:\n# Starting...\n# Done!\n\nTip: Used in frameworks!",
+    
+    // ========== FILE HANDLING ==========
+    "file|files|file handling": "📁 File Handling:\n\n# Write\nwith open('file.txt', 'w') as f:\n    f.write('Hello World')\n\n# Read\nwith open('file.txt', 'r') as f:\n    content = f.read()\n    print(content)\n\n# Append\nwith open('file.txt', 'a') as f:\n    f.write('\\nNew line')\n\nModes: r, w, a, r+, rb, wb\n\nTip: Always use 'with' statement!",
+    "read file|reading files": "📖 Reading Files:\n\n# Read all\nwith open('file.txt', 'r') as f:\n    content = f.read()\n\n# Read lines as list\nwith open('file.txt', 'r') as f:\n    lines = f.readlines()\n\n# Read line by line\nwith open('file.txt', 'r') as f:\n    for line in f:\n        print(line.strip())\n\nTip: Use .strip() to remove \\n!",
+    "write file|writing files": "✍️ Writing Files:\n\n# Write (overwrites)\nwith open('file.txt', 'w') as f:\n    f.write('Line 1\\n')\n    f.write('Line 2\\n')\n\n# Write list\nlines = ['Line 1\\n', 'Line 2\\n']\nwith open('file.txt', 'w') as f:\n    f.writelines(lines)\n\n# Append\nwith open('file.txt', 'a') as f:\n    f.write('New line\\n')\n\nTip: 'w' creates file if not exists!",
+    "json|json file": "📦 Working with JSON:\n\nimport json\n\n# Write JSON\ndata = {'name': 'vG', 'age': 20}\nwith open('data.json', 'w') as f:\n    json.dump(data, f, indent=4)\n\n# Read JSON\nwith open('data.json', 'r') as f:\n    data = json.load(f)\n\n# String conversion\njson_str = json.dumps(data)\ndata = json.loads(json_str)\n\nTip: indent=4 for readability!",
+    "csv|csv file": "📊 Working with CSV:\n\nimport csv\n\n# Write CSV\nwith open('data.csv', 'w', newline='') as f:\n    writer = csv.writer(f)\n    writer.writerow(['Name', 'Age'])\n    writer.writerow(['vG', 20])\n\n# Read CSV\nwith open('data.csv', 'r') as f:\n    reader = csv.reader(f)\n    for row in reader:\n        print(row)\n\nTip: Use DictReader for headers!",
+    
+    // ========== ERROR HANDLING ==========
+    "error|exception|try except": "⚠️ Error Handling:\n\ntry:\n    x = int(input('Number: '))\n    result = 10 / x\n    print(result)\nexcept ValueError:\n    print('Invalid number!')\nexcept ZeroDivisionError:\n    print('Cannot divide by zero!')\nexcept Exception as e:\n    print(f'Error: {e}')\nfinally:\n    print('Done!')\n\nTip: Catch specific errors first!",
+    "exception types|error types": "🐛 Common Exceptions:\n\n• ValueError - wrong value type\n• TypeError - wrong data type\n• IndexError - invalid index\n• KeyError - key not in dict\n• FileNotFoundError - file missing\n• ZeroDivisionError - divide by 0\n• ImportError - import fails\n• AttributeError - invalid attribute\n• NameError - variable not defined\n\nTip: Read error messages carefully!",
+    "raise|raise exception": "🚨 Raising Exceptions:\n\ndef divide(a, b):\n    if b == 0:\n        raise ValueError('Cannot divide by zero')\n    return a / b\n\ntry:\n    result = divide(10, 0)\nexcept ValueError as e:\n    print(e)\n\n# Custom exception\nclass CustomError(Exception):\n    pass\n\nraise CustomError('Something wrong')\n\nTip: Use for validation!",
+    
+    // ========== MODULES & PACKAGES ==========
+    "module|modules|import": "📦 Modules (reusable code files):\n\n# Import module\nimport math\nprint(math.sqrt(16))\n\n# Import specific\nfrom math import pi, sqrt\nprint(pi)\n\n# Import with alias\nimport numpy as np\n\n# Import all (avoid)\nfrom math import *\n\nTip: Organize code in modules!",
+    "create module|custom module": "🛠️ Creating Modules:\n\n# mymodule.py\ndef greet(name):\n    return f'Hello {name}'\n\nPI = 3.14159\n\n# main.py\nimport mymodule\nprint(mymodule.greet('vG'))\nprint(mymodule.PI)\n\nOr:\nfrom mymodule import greet\nprint(greet('World'))\n\nTip: Keep related code together!",
+    "package|packages|library": "📚 Packages (module collections):\n\nStructure:\nmypackage/\n    __init__.py\n    module1.py\n    module2.py\n\nUsage:\nimport mypackage.module1\nfrom mypackage import module2\n\nPopular packages:\n• numpy - numerical computing\n• pandas - data analysis\n• requests - HTTP requests\n• flask - web framework\n\nTip: pip install package_name!",
+    "pip|pip install": "📥 Pip (package manager):\n\n# Install package\npip install requests\n\n# Install specific version\npip install flask==2.0.0\n\n# Upgrade\npip install --upgrade numpy\n\n# Uninstall\npip uninstall pandas\n\n# List installed\npip list\n\n# Save dependencies\npip freeze > requirements.txt\n\n# Install from file\npip install -r requirements.txt\n\nTip: Use virtual environments!",
+    "virtual environment|venv|virtualenv": "🌐 Virtual Environments:\n\n# Create\npython -m venv myenv\n\n# Activate\n# Windows:\nmyenv\\Scripts\\activate\n# Mac/Linux:\nsource myenv/bin/activate\n\n# Deactivate\ndeactivate\n\n# Install packages\npip install flask\n\n# Save dependencies\npip freeze > requirements.txt\n\nTip: One venv per project!",
+    
+    // ========== OOP CONCEPTS ==========
+    "class|classes|oop": "🏗️ Classes (OOP blueprints):\n\nclass Dog:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n    \n    def bark(self):\n        return f'{self.name} says Woof!'\n\nmy_dog = Dog('Buddy', 3)\nprint(my_dog.bark())\n\nBenefits:\n• Organization\n• Reusability\n• Encapsulation\n• Inheritance\n\nTip: Use for complex data!",
+    "init|constructor|__init__": "🔨 Constructor (__init__):\n\nclass Person:\n    def __init__(self, name, age):\n        self.name = name  # Instance variable\n        self.age = age\n    \n    def introduce(self):\n        return f'I am {self.name}, {self.age} years old'\n\np1 = Person('vG', 20)\nprint(p1.introduce())\n\nTip: __init__ runs automatically!",
+    "inheritance|inherit|extends": "👨‍👦 Inheritance (reuse code):\n\nclass Animal:\n    def __init__(self, name):\n        self.name = name\n    \n    def speak(self):\n        pass\n\nclass Dog(Animal):\n    def speak(self):\n        return f'{self.name} barks'\n\nclass Cat(Animal):\n    def speak(self):\n        return f'{self.name} meows'\n\ndog = Dog('Buddy')\nprint(dog.speak())\n\nTip: Child inherits from parent!",
+    "polymorphism|override": "🎭 Polymorphism (many forms):\n\nclass Shape:\n    def area(self):\n        pass\n\nclass Circle(Shape):\n    def __init__(self, radius):\n        self.radius = radius\n    \n    def area(self):\n        return 3.14 * self.radius ** 2\n\nclass Square(Shape):\n    def __init__(self, side):\n        self.side = side\n    \n    def area(self):\n        return self.side ** 2\n\nTip: Same method, different behavior!",
+    "encapsulation|private|public": "🔒 Encapsulation (data hiding):\n\nclass BankAccount:\n    def __init__(self, balance):\n        self.__balance = balance  # Private\n    \n    def deposit(self, amount):\n        if amount > 0:\n            self.__balance += amount\n    \n    def get_balance(self):\n        return self.__balance\n\nacc = BankAccount(1000)\nacc.deposit(500)\nprint(acc.get_balance())\n\nTip: __ makes attribute private!",
+    "static method|class method": "🎯 Static & Class Methods:\n\nclass Math:\n    @staticmethod\n    def add(a, b):\n        return a + b\n    \n    @classmethod\n    def from_string(cls, string):\n        a, b = map(int, string.split(','))\n        return cls.add(a, b)\n\nprint(Math.add(5, 3))\nprint(Math.from_string('10,20'))\n\nTip: No self needed for static!",
+    "property|getter setter": "📝 Properties (getters/setters):\n\nclass Person:\n    def __init__(self, name):\n        self._name = name\n    \n    @property\n    def name(self):\n        return self._name\n    \n    @name.setter\n    def name(self, value):\n        if len(value) > 0:\n            self._name = value\n\np = Person('vG')\nprint(p.name)\np.name = 'Python'\n\nTip: Control attribute access!",
+    
+    // ========== ADVANCED CONCEPTS ==========
+    "generator|yield": "⚡ Generators (memory efficient):\n\ndef count_up_to(n):\n    i = 1\n    while i <= n:\n        yield i\n        i += 1\n\nfor num in count_up_to(5):\n    print(num)\n\n# Generator expression\nsquares = (x**2 for x in range(1000000))\n\nBenefit: Creates values on-demand!\nTip: Use for large datasets!",
+    "iterator|iter|next": "🔄 Iterators:\n\nnums = [1, 2, 3]\nit = iter(nums)\n\nprint(next(it))  # 1\nprint(next(it))  # 2print(next(it))  # 3\n# next(it)  # StopIteration error\n\n# Custom iterator\nclass Counter:\n    def __init__(self, max):\n        self.max = max\n        self.num = 0\n    \n    def __iter__(self):\n        return self\n    \n    def __next__(self):\n        if self.num < self.max:\n            self.num += 1\n            return self.num\n        raise StopIteration\n\nTip: Iterators remember state!",
+    "map|filter|reduce": "🗺️ Map, Filter, Reduce:\n\n# Map (transform)\nnums = [1, 2, 3, 4]\nsquares = list(map(lambda x: x**2, nums))\n# [1, 4, 9, 16]\n\n# Filter (select)\nevens = list(filter(lambda x: x%2==0, nums))\n# [2, 4]\n\n# Reduce (aggregate)\nfrom functools import reduce\ntotal = reduce(lambda x,y: x+y, nums)\n# 10\n\nTip: Functional programming!",
+    "enumerate|zip": "🔢 Enumerate & Zip:\n\n# Enumerate (index + value)\nfruits = ['apple', 'banana', 'cherry']\nfor i, fruit in enumerate(fruits):\n    print(f'{i}: {fruit}')\n\n# Zip (combine)\nnames = ['Alice', 'Bob']\nages = [25, 30]\nfor name, age in zip(names, ages):\n    print(f'{name} is {age}')\n\n# Unzip\npairs = [(1,'a'), (2,'b')]\nnums, letters = zip(*pairs)\n\nTip: Very useful for iteration!",
+    "context manager|with statement": "🔐 Context Managers:\n\n# File handling\nwith open('file.txt', 'r') as f:\n    content = f.read()\n# File auto-closes\n\n# Custom context manager\nclass Timer:\n    def __enter__(self):\n        self.start = time.time()\n        return self\n    \n    def __exit__(self, *args):\n        print(f'Time: {time.time() - self.start}')\n\nwith Timer():\n    # Your code\n    pass\n\nTip: Ensures cleanup!",
+    "comprehension|list dict set comprehension": "⚡ Comprehensions (concise loops):\n\n# List comprehension\nsquares = [x**2 for x in range(5)]\n\n# Dict comprehension\nsquare_dict = {x: x**2 for x in range(5)}\n\n# Set comprehension\nevens = {x for x in range(10) if x%2==0}\n\n# Nested\nmatrix = [[i*j for j in range(3)] for i in range(3)]\n\n# With condition\nfiltered = [x for x in range(20) if x%2==0 if x%3==0]\n\nTip: Faster than loops!",
+    "args kwargs|*args **kwargs": "📦 *args & **kwargs:\n\n# Variable positional args\ndef sum_all(*args):\n    return sum(args)\n\nprint(sum_all(1, 2, 3, 4))  # 10\n\n# Variable keyword args\ndef print_info(**kwargs):\n    for key, value in kwargs.items():\n        print(f'{key}: {value}')\n\nprint_info(name='vG', age=20)\n\n# Combined\ndef func(*args, **kwargs):\n    print(args)    # tuple\n    print(kwargs)  # dict\n\nTip: Very flexible!",
+    
+    // ========== POPULAR LIBRARIES ==========
+    "numpy|np|array": "🔢 NumPy (numerical computing):\n\nimport numpy as np\n\n# Create array\narr = np.array([1, 2, 3, 4])\n\n# Operations (vectorized)\nprint(arr * 2)  # [2, 4, 6, 8]\nprint(arr + 10) # [11, 12, 13, 14]\n\n# Statistics\nprint(arr.mean())\nprint(arr.std())\nprint(arr.max())\n\n# 2D arrays\nmatrix = np.array([[1,2], [3,4]])\n\nTip: Much faster than lists!",
+    "pandas|dataframe|df": "📊 Pandas (data analysis):\n\nimport pandas as pd\n\n# Create DataFrame\ndf = pd.DataFrame({\n    'Name': ['Alice', 'Bob', 'Charlie'],\n    'Age': [25, 30, 35],\n    'City': ['NY', 'LA', 'SF']\n})\n\n# Operations\nprint(df.head())\nprint(df.describe())\nprint(df['Age'].mean())\n\n# Read CSV\ndf = pd.read_csv('data.csv')\n\nTip: Excel-like operations!",
+    "matplotlib|plot|visualization": "📈 Matplotlib (visualization):\n\nimport matplotlib.pyplot as plt\n\n# Line plot\nx = [1, 2, 3, 4, 5]\ny = [2, 4, 6, 8, 10]\nplt.plot(x, y)\nplt.xlabel('X axis')\nplt.ylabel('Y axis')\nplt.title('Line Plot')\nplt.show()\n\n# Bar chart\nplt.bar(['A', 'B', 'C'], [10, 20, 15])\nplt.show()\n\nTip: Visualize data easily!",
+    "requests|http|api": "🌐 Requests (HTTP library):\n\nimport requests\n\n# GET request\nresponse = requests.get('https://api.github.com')\nprint(response.status_code)\ndata = response.json()\n\n# POST request\ndata = {'name': 'vG', 'age': 20}\nresponse = requests.post(url, json=data)\n\n# Headers\nheaders = {'Authorization': 'Bearer token'}\nresponse = requests.get(url, headers=headers)\n\nTip: Always check status_code!",
+    "flask|web framework": "🌐 Flask (web framework):\n\nfrom flask import Flask, render_template\n\napp = Flask(__name__)\n\n@app.route('/')\ndef home():\n    return 'Hello World!'\n\n@app.route('/user/<name>')\ndef user(name):\n    return f'Hello {name}'\n\nif __name__ == '__main__':\n    app.run(debug=True)\n\nTip: Start web development!",
+    "django|web development": "🏗️ Django (full-stack framework):\n\n# Create project\ndjango-admin startproject mysite\n\n# Create app\npython manage.py startapp myapp\n\n# Models\nclass Post(models.Model):\n    title = models.CharField(max_length=200)\n    content = models.TextField()\n    created = models.DateTimeField(auto_now_add=True)\n\n# Run server\npython manage.py runserver\n\nTip: Complete web framework!",
+    "sqlite|database|sql": "💾 SQLite (database):\n\nimport sqlite3\n\n# Connect\nconn = sqlite3.connect('database.db')\ncursor = conn.cursor()\n\n# Create table\ncursor.execute('''\n    CREATE TABLE users (\n        id INTEGER PRIMARY KEY,\n        name TEXT,\n        age INTEGER\n    )\n''')\n\n# Insert\ncursor.execute('INSERT INTO users VALUES (?, ?, ?)', (1, 'vG', 20))\nconn.commit()\n\n# Query\ncursor.execute('SELECT * FROM users')\nprint(cursor.fetchall())\n\nTip: Built-in database!",
+    "beautifulsoup|scraping|web scraping": "🕷️ BeautifulSoup (web scraping):\n\nfrom bs4 import BeautifulSoup\nimport requests\n\nurl = 'https://example.com'\nresponse = requests.get(url)\nsoup = BeautifulSoup(response.text, 'html.parser')\n\n# Find elements\ntitle = soup.find('h1').text\nlinks = soup.find_all('a')\n\nfor link in links:\n    print(link.get('href'))\n\n# CSS selectors\ndata = soup.select('.class-name')\n\nTip: Extract web data!",
+    "selenium|automation|browser": "🤖 Selenium (browser automation):\n\nfrom selenium import webdriver\nfrom selenium.webdriver.common.by import By\n\ndriver = webdriver.Chrome()\ndriver.get('https://google.com')\n\n# Find element\nsearch = driver.find_element(By.NAME, 'q')\nsearch.send_keys('Python')\nsearch.submit()\n\n# Wait\nfrom selenium.webdriver.support.ui import WebDriverWait\nelement = WebDriverWait(driver, 10).until(...)\n\ndriver.quit()\n\nTip: Automate web tasks!",
+    
+    // ========== MACHINE LEARNING & AI ==========
+    "machine learning|ml|ai": "🤖 Machine Learning Basics:\n\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LinearRegression\n\n# Prepare data\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)\n\n# Train model\nmodel = LinearRegression()\nmodel.fit(X_train, y_train)\n\n# Predict\npredictions = model.predict(X_test)\n\n# Score\nscore = model.score(X_test, y_test)\n\nTip: Start with scikit-learn!",
+    "sklearn|scikit-learn|model": "🎓 Scikit-learn (ML library):\n\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.metrics import accuracy_score\n\n# Classification\nmodel = DecisionTreeClassifier()\nmodel.fit(X_train, y_train)\ny_pred = model.predict(X_test)\naccuracy = accuracy_score(y_test, y_pred)\n\n# Clustering\nfrom sklearn.cluster import KMeans\nkmeans = KMeans(n_clusters=3)\nkmeans.fit(X)\nlabels = kmeans.labels_\n\nTip: 100+ ML algorithms!",
+    "tensorflow|keras|neural network": "🧠 TensorFlow & Keras (deep learning):\n\nfrom tensorflow import keras\nfrom tensorflow.keras import layers\n\n# Build model\nmodel = keras.Sequential([\n    layers.Dense(64, activation='relu', input_shape=(10,)),\n    layers.Dense(32, activation='relu'),\n    layers.Dense(1, activation='sigmoid')\n])\n\n# Compile\nmodel.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])\n\n# Train\nmodel.fit(X_train, y_train, epochs=10, batch_size=32)\n\nTip: Deep learning power!",
+    "opencv|computer vision|image": "👁️ OpenCV (computer vision):\n\nimport cv2\n\n# Read image\nimg = cv2.imread('image.jpg')\n\n# Convert to grayscale\ngray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)\n\n# Detect faces\nface_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')\nfaces = face_cascade.detectMultiScale(gray, 1.3, 5)\n\n# Draw rectangles\nfor (x,y,w,h) in faces:\n    cv2.rectangle(img, (x,y), (x+w,y+h), (255,0,0), 2)\n\nTip: Image processing!",
+    "nlp|natural language|text processing": "💬 NLP (Natural Language Processing):\n\nimport nltk\nfrom nltk.tokenize import word_tokenize\nfrom nltk.corpus import stopwords\n\n# Tokenize\ntext = 'Python is amazing for NLP!'\ntokens = word_tokenize(text)\n\n# Remove stopwords\nstop_words = set(stopwords.words('english'))\nfiltered = [w for w in tokens if w.lower() not in stop_words]\n\n# Sentiment analysis\nfrom textblob import TextBlob\nblob = TextBlob(text)\nprint(blob.sentiment)\n\nTip: Process text data!",
+    
+    // ========== BEST PRACTICES ==========
+    "best practice|coding standards|clean code": "✨ Python Best Practices:\n\n1. Use meaningful names\n2. Follow PEP 8 style guide\n3. Write docstrings\n4. Keep functions small\n5. Use list comprehensions\n6. Handle exceptions\n7. Use virtual environments\n8. Write tests\n9. Comment wisely\n10. Use type hints\n\nExample:\ndef calculate_average(numbers: list) -> float:\n    '''Calculate average of numbers.'''\n    if not numbers:\n        raise ValueError('Empty list')\n    return sum(numbers) / len(numbers)\n\nTip: Clean code = maintainable code!",
+    "pep8|style guide|formatting": "📏 PEP 8 Style Guide:\n\n• 4 spaces for indentation\n• Max 79 characters per line\n• 2 blank lines between functions\n• snake_case for variables\n• PascalCase for classes\n• UPPER_CASE for constants\n• Spaces around operators\n• Import order: standard, third-party, local\n\nBad:\nx=5+3\n\nGood:\nx = 5 + 3\n\nTip: Use autopep8 or black!",
+    "docstring|documentation|comments": "📝 Documentation:\n\ndef calculate_average(numbers):\n    '''\n    Calculate the average of a list of numbers.\n    \n    Args:\n        numbers (list): List of numeric values\n    \n    Returns:\n        float: The average value\n    \n    Raises:\n        ValueError: If list is empty\n    '''\n    if not numbers:\n        raise ValueError('Empty list')\n    return sum(numbers) / len(numbers)\n\nTip: Document all functions!",
+    "testing|unittest|pytest": "🧪 Testing with unittest:\n\nimport unittest\n\nclass TestMath(unittest.TestCase):\n    def test_addition(self):\n        self.assertEqual(2 + 2, 4)\n    \n    def test_division(self):\n        with self.assertRaises(ZeroDivisionError):\n            1 / 0\n    \n    def setUp(self):\n        # Run before each test\n        pass\n    \n    def tearDown(self):\n        # Run after each test\n        pass\n\nif __name__ == '__main__':\n    unittest.main()\n\nTip: Test everything!",
+    "debugging|debug|troubleshoot": "🐛 Debugging Tips:\n\n# 1. Print debugging\nprint(f'Value: {variable}')\n\n# 2. Use debugger\nimport pdb\npdb.set_trace()  # Breakpoint\n\n# 3. Logging\nimport logging\nlogging.basicConfig(level=logging.DEBUG)\nlogging.debug('Debug message')\n\n# 4. Try-except\ntry:\n    risky_code()\nexcept Exception as e:\n    print(f'Error: {e}')\n    import traceback\n    traceback.print_exc()\n\nTip: Read error messages!",
+    "performance|optimize|speed": "⚡ Performance Optimization:\n\n# 1. Use built-in functions\nsum(numbers)  # Faster than loop\n\n# 2. List comprehension\nsquares = [x**2 for x in range(1000)]  # Faster\n\n# 3. Use generators for large data\ndef gen():\n    for i in range(1000000):\n        yield i\n\n# 4. Profile code\nimport cProfile\ncProfile.run('function()')\n\n# 5. Use appropriate data structures\nset for membership tests (O(1))\ndict for lookups (O(1))\n\nTip: Measure before optimizing!",
+    "security|secure code|safety": "🔒 Security Best Practices:\n\n# 1. Validate input\ndef process(user_input):\n    if not isinstance(user_input, str):\n        raise TypeError('String required')\n    # Sanitize input\n    clean = user_input.strip()\n\n# 2. Hash passwords\nimport hashlib\npassword_hash = hashlib.sha256(password.encode()).hexdigest()\n\n# 3. Use environment variables\nimport os\nAPI_KEY = os.getenv('API_KEY')\n\n# 4. Avoid eval()\n# eval(user_input)  # DANGEROUS!\n\nTip: Never trust user input!",
+    
+    // ========== ASYNC PROGRAMMING ==========
+    "async|asyncio|asynchronous": "⏱️ Async Programming:\n\nimport asyncio\n\nasync def fetch_data():\n    print('Fetching...')\n    await asyncio.sleep(1)\n    print('Done!')\n    return 'Data'\n\nasync def main():\n    result = await fetch_data()\n    print(result)\n\n# Run\nasyncio.run(main())\n\n# Multiple tasks\nasync def main():\n    tasks = [fetch_data() for _ in range(3)]\n    results = await asyncio.gather(*tasks)\n\nTip: Great for I/O operations!",
+    "multithreading|threading|threads": "🧵 Multithreading:\n\nimport threading\nimport time\n\ndef worker(name):\n    print(f'Worker {name} started')\n    time.sleep(2)\n    print(f'Worker {name} done')\n\n# Create threads\nthreads = []\nfor i in range(3):\n    t = threading.Thread(target=worker, args=(i,))\n    threads.append(t)\n    t.start()\n\n# Wait for completion\nfor t in threads:\n    t.join()\n\nTip: Use for I/O-bound tasks!",
+    "multiprocessing|parallel|cpu": "🚀 Multiprocessing:\n\nfrom multiprocessing import Pool\n\ndef square(x):\n    return x ** 2\n\nif __name__ == '__main__':\n    with Pool(4) as p:\n        results = p.map(square, range(10))\n        print(results)\n\n# Process class\nfrom multiprocessing import Process\n\ndef worker():\n    print('Working...')\n\nif __name__ == '__main__':\n    p = Process(target=worker)\n    p.start()\n    p.join()\n\nTip: Use for CPU-bound tasks!",
+    
+    // ========== PROJECT IDEAS ==========
+    "project|project ideas|what to build": "💡 Python Project Ideas:\n\n🔰 Beginner:\n• Calculator\n• To-Do List\n• Password Generator\n• Dice Roller\n• Temperature Converter\n\n🎯 Intermediate:\n• Web Scraper\n• Chat Application\n• Expense Tracker\n• Weather App\n• URL Shortener\n\n🚀 Advanced:\n• Social Media Dashboard\n• AI Chatbot\n• Face Recognition System\n• Stock Price Predictor\n• E-commerce Website\n\nTip: Start small, scale up!",
+    "career|jobs|python developer": "💼 Python Career Paths:\n\n1. Web Developer (Django/Flask)\n2. Data Scientist (Pandas/NumPy)\n3. Machine Learning Engineer (TensorFlow)\n4. DevOps Engineer (Automation)\n5. Backend Developer (APIs)\n6. Data Analyst (Visualization)\n7. AI Engineer (Deep Learning)\n8. Automation Engineer (Selenium)\n9. Game Developer (Pygame)\n10. Security Analyst (Pentesting)\n\nAverage Salary: $80k-$150k+\n\nTip: Build portfolio projects!",
+    "learn|learning path|roadmap": "🗺️ Python Learning Roadmap:\n\n📍 Month 1-2: Basics\n• Syntax, variables, data types\n• Control flow, loops\n• Functions, modules\n\n📍 Month 3-4: Intermediate\n• OOP concepts\n• File handling\n• Error handling\n• Data structures\n\n📍 Month 5-6: Advanced\n• Decorators, generators\n• Async programming\n• Testing, debugging\n\n📍 Month 7+: Specialization\n• Web (Django/Flask)\n• Data Science (Pandas)\n• ML/AI (TensorFlow)\n\nTip: Practice daily!",
+    "interview|python interview|questions": "🎤 Common Interview Questions:\n\n1. What is Python?\n2. List vs Tuple difference?\n3. Explain decorators\n4. What is GIL?\n5. Difference between deep & shallow copy?\n6. Explain generators\n7. What is *args and **kwargs?\n8. How does memory management work?\n9. Explain list comprehension\n10. Difference between == and is?\n\nCoding Questions:\n• Reverse string\n• Find duplicates\n• Fibonacci sequence\n• Palindrome check\n• FizzBuzz\n\nTip: Practice on LeetCode!",
+    
+    // ========== MISCELLANEOUS ==========
+    "regex|regular expression|pattern": "🔍 Regular Expressions:\n\nimport re\n\n# Find pattern\ntext = 'Email: test@example.com'\npattern = r'\\b[\\w.-]+@[\\w.-]+\\.\\w+\\b'\nmatch = re.search(pattern, text)\nprint(match.group())  # test@example.com\n\n# Find all\nemails = re.findall(pattern, text)\n\n# Replace\nclean = re.sub(r'\\d+', '', text)\n\n# Split\nparts = re.split(r'\\s+', text)\n\nTip: Test regex on regex101.com!",
+    "datetime|date time|timestamp": "📅 Date & Time:\n\nfrom datetime import datetime, timedelta\n\n# Current time\nnow = datetime.now()\nprint(now)\n\n# Format\nformatted = now.strftime('%Y-%m-%d %H:%M:%S')\n\n# Parse\ndate = datetime.strptime('2024-01-01', '%Y-%m-%d')\n\n# Arithmetic\ntomorrow = now + timedelta(days=1)\nweek_ago = now - timedelta(weeks=1)\n\n# Unix timestamp\ntimestamp = now.timestamp()\n\nTip: Use timezone-aware dates!",
+    "random|random number|randomize": "🎲 Random Module:\n\nimport random\n\n# Random integer\nnum = random.randint(1, 10)\n\n# Random float\nval = random.random()  # 0.0 to 1.0\nval = random.uniform(1.5, 10.5)\n\n# Random choice\ncolor = random.choice(['red', 'blue', 'green'])\n\n# Shuffle list\ncards = [1, 2, 3, 4, 5]\nrandom.shuffle(cards)\n\n# Random sample\nsample = random.sample(range(100), 5)\n\nTip: Set seed for reproducibility!",
+    "os module|operating system|file system": "💻 OS Module:\n\nimport os\n\n# Current directory\nprint(os.getcwd())\n\n# Change directory\nos.chdir('/path/to/dir')\n\n# List files\nfiles = os.listdir('.')\n\n# Create directory\nos.mkdir('new_folder')\nos.makedirs('path/to/folder')\n\n# Remove\nos.remove('file.txt')\nos.rmdir('folder')\n\n# Path operations\npath = os.path.join('folder', 'file.txt')\nprint(os.path.exists(path))\n\nTip: Use pathlib for modern approach!",
+    "command line|argparse|cli": "⌨️ Command Line Arguments:\n\nimport argparse\n\nparser = argparse.ArgumentParser(description='My Program')\nparser.add_argument('name', help='Your name')\nparser.add_argument('-a', '--age', type=int, help='Your age')\nparser.add_argument('-v', '--verbose', action='store_true')\n\nargs = parser.parse_args()\n\nprint(f'Name: {args.name}')\nif args.age:\n    print(f'Age: {args.age}')\n\nRun:\npython script.py John -a 25 -v\n\nTip: Professional CLI tool!",
+    "email|send email|smtp": "📧 Sending Emails:\n\nimport smtplib\nfrom email.mime.text import MIMEText\n\nmsg = MIMEText('Hello from Python!')\nmsg['Subject'] = 'Test Email'\nmsg['From'] = 'sender@example.com'\nmsg['To'] = 'receiver@example.com'\n\nwith smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:\n    server.login('sender@gmail.com', 'app_password')\n    server.send_message(msg)\n\nTip: Use app passwords for Gmail!",
+    
+    // ========== HELP & RESOURCES ==========
+    "help|get help|stuck": "🆘 Getting Help:\n\n1. Official Docs: docs.python.org\n2. Stack Overflow: stackoverflow.com\n3. Python Discord/Reddit communities\n4. GitHub Issues\n5. Python Tutor (visualize code)\n\nIn Python:\n• help(function)\n• dir(object)\n• type(variable)\n• .__doc__ attribute\n\nTip: Always search error messages!",
+    "resource|learning resources|tutorial": "📚 Learning Resources:\n\n🌐 Websites:\n• python.org (official)\n• realpython.com\n• w3schools.com\n• programiz.com\n\n📹 YouTube:\n• Corey Schafer\n• Programming with Mosh\n• freeCodeCamp\n\n📖 Books:\n• Automate the Boring Stuff\n• Python Crash Course\n• Fluent Python\n\n💻 Practice:\n• LeetCode\n• HackerRank\n• Codewars\n\nTip: Learn by doing!",
+    "community|forum|python community": "👥 Python Community:\n\n💬 Forums:\n• r/learnpython (Reddit)\n• r/Python (Reddit)\n• Python Discord\n• Stack Overflow\n\n🎉 Events:\n• PyCon (conferences)\n• Local Python meetups\n• Hackathons\n\n🌟 Contribute:\n• GitHub open source\n• Answer questions\n• Write tutorials\n• Share projects\n\nTip: Community is super helpful!",
+    
+    // ========== DEFAULT RESPONSES ==========
+    "default": [
+        "🤔 I'm not sure about that specific topic. Try asking:\n• 'What are lists?'\n• 'How to use functions?'\n• 'Explain OOP'\n• 'Show me project ideas'\n• 'What is Flask?'",
+        "💭 Hmm, I don't have specific info on that. Ask me about:\n• Python basics (variables, loops, functions)\n• Data structures (lists, dicts, sets)\n• OOP concepts (classes, inheritance)\n• Popular libraries (pandas, numpy, flask)\n• Best practices & tips",
+        "🔍 I couldn't find an answer for that. Try:\n• 'Help' - see what I can do\n• Browse the stages above\n• Ask about specific Python topics\n• 'Show me projects'\n• 'Learning roadmap'",
+        "🎯 Not sure what you mean. Popular questions:\n• 'What is Python?'\n• 'How to handle files?'\n• 'Explain decorators'\n• 'Machine learning basics'\n• 'Python career paths'",
+        "💡 I don't have that info yet. Try asking:\n• Specific Python concepts\n• Library usage (numpy, pandas, etc.)\n• Code examples\n• Best practices\n• Project ideas\nType 'help' to see all I can do!"
+    ]
+};
+// Chatbot knowledge base
+let chatOpen = false;
+
+function toggleChat() {
+    chatOpen = !chatOpen;
+    const chatWindow = document.getElementById('chatWindow');
+    chatWindow.classList.toggle('active');
+    
+    if (chatOpen) {
+        document.getElementById('chatInput').focus();
+        // Track chat usage
+        if (stats) {
+            stats.chatUsed = (stats.chatUsed || 0) + 1;
+            saveStats();
+        }
+    }
+}
+
+function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const message = input.value.trim();
+    
+    if (!message) return;
+    
+    // Add user message
+    addChatMessage(message, 'user');
+    input.value = '';
+    
+    // Show typing indicator
+    showTypingIndicator();
+    
+    // Get AI response after delay
+    setTimeout(() => {
+        removeTypingIndicator();
+        const response = getAIResponse(message);
+        addChatMessage(response, 'ai');
+    }, 800 + Math.random() * 700);
+}
+
+function addChatMessage(text, sender) {
+    const messagesDiv = document.getElementById('chatMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `chat-message ${sender}`;
+    
+    const avatar = document.createElement('div');
+    avatar.className = `chat-avatar ${sender}`;
+    avatar.textContent = sender === 'ai' ? '🤖' : '👤';
+    
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-bubble';
+    bubble.innerHTML = formatMessage(text);
+    
+    messageDiv.appendChild(avatar);
+    messageDiv.appendChild(bubble);
+    messagesDiv.appendChild(messageDiv);
+    
+    // Scroll to bottom
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+function formatMessage(text) {
+    // Format code blocks
+    return text.replace(/\n/g, '<br>');
+}
+
+function getAIResponse(query) {
+    const lowerQuery = query.toLowerCase();
+    
+    // Search through knowledge base
+    for (const [pattern, response] of Object.entries(aiKnowledge)) {
+        if (pattern === 'default') continue;
+        
+        const keywords = pattern.split('|');
+        if (keywords.some(keyword => lowerQuery.includes(keyword))) {
+            return response;
+        }
+    }
+    
+    // Return random default response
+    const defaults = aiKnowledge.default;
+    return defaults[Math.floor(Math.random() * defaults.length)];
+}
+
+function showTypingIndicator() {
+    const messagesDiv = document.getElementById('chatMessages');
+    const indicator = document.createElement('div');
+    indicator.className = 'chat-message';
+    indicator.id = 'typingIndicator';
+    indicator.innerHTML = `
+        <div class="chat-avatar ai">🤖</div>
+        <div class="chat-bubble">
+            <div class="typing-indicator">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>
+        </div>
+    `;
+    messagesDiv.appendChild(indicator);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+function removeTypingIndicator() {
+    const indicator = document.getElementById('typingIndicator');
+    if (indicator) indicator.remove();
+}
+
+function handleChatKeyPress(event) {
+    if (event.key === 'Enter') {
+        sendMessage();
+    }
+}
+
+function sendSuggestion(text) {
+    document.getElementById('chatInput').value = text;
+    sendMessage();
+}
+
+// Close chat when clicking outside
+document.addEventListener('click', (e) => {
+    const chatWindow = document.getElementById('chatWindow');
+    const chatFab = document.getElementById('chatFab');
+    
+    if (chatOpen && !chatWindow.contains(e.target) && !chatFab.contains(e.target)) {
+        toggleChat();
+    }
+});
     </script>
 </body>
 
