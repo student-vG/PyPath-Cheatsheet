@@ -473,6 +473,30 @@
                 bottom: 180px;
                 right: 15px;
             }
+            
+        .nav-buttons {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--border);
+            padding: 15px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            z-index: 999;
+            margin: 0;
+            /* Add this */
+        }
+
+        body {
+            padding-bottom: 70px !important;
+            /* Increased padding */
+            margin-bottom: 0;
+            /* Add this */
+        
         }
 
         @media (max-width: 480px) {
@@ -2765,4 +2789,5 @@ document.addEventListener('click', (e) => {
 </body>
 
 </html>
+
 
