@@ -47,10 +47,10 @@
 
         body {
             font-family: "Roboto", sans-serif;
-
             background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
             color: var(--text-primary);
             line-height: 1.6;
+            height :auto;
             min-height: 100vh;
             padding-bottom: 80px;
         }
@@ -350,6 +350,7 @@
             gap: 10px;
             justify-content: center;
             z-index: 999;
+            margin: 0;
         }
 
         .nav-btn {
@@ -1483,33 +1484,7 @@
     }
 }
 
-            /* Fix white space at bottom on mobile */
-body {
-    padding-bottom: 80px;
-}
 
-@media (max-width: 768px) {
-    body {
-        padding-bottom: 0;
-    }
-    
-    /* Adjust content to account for fixed bottom nav */
-    .container {
-        padding-bottom: 90px; /* Space for nav buttons */
-    }
-    
-    /* Ensure nav buttons stay visible */
-    .nav-buttons {
-        padding: 10px;
-        background: rgba(26, 26, 46, 0.98);
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding-bottom: 85px;
-    }
-}
     </style>
 </head>
 
@@ -2817,6 +2792,7 @@ document.addEventListener('click', (e) => {
 </body>
 
 </html>
+
 
 
 
