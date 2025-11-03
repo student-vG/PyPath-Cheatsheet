@@ -492,7 +492,7 @@
         }
 
         body {
-            padding-bottom: 0;
+            padding-bottom: 0 !important;
             /* Increased padding */
             margin-bottom: 0;
             /* Add this */
@@ -1480,6 +1480,34 @@
     
     .chat-bubble {
         max-width: 80%;
+    }
+}
+
+            /* Fix white space at bottom on mobile */
+body {
+    padding-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-bottom: 0;
+    }
+    
+    /* Adjust content to account for fixed bottom nav */
+    .container {
+        padding-bottom: 90px; /* Space for nav buttons */
+    }
+    
+    /* Ensure nav buttons stay visible */
+    .nav-buttons {
+        padding: 10px;
+        background: rgba(26, 26, 46, 0.98);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding-bottom: 85px;
     }
 }
     </style>
@@ -2789,6 +2817,7 @@ document.addEventListener('click', (e) => {
 </body>
 
 </html>
+
 
 
 
